@@ -1,14 +1,19 @@
 $(document).ready(function(){
 var item;
 function inventory(item) {
-    var saveInventory = document.cookie;
+    var saveInventory;
     saveInventory = [{
-       "name" : item,
-        "expires" : "Mon, 12 Sep 2016 16:00:00 GMT+1"
+       "name" : item
     }]; 
- 
-    return saveInventory;
+
+var setCookie = Cookies.set("name", saveInventory, {expires : 0.00001});
+
+
+    return Cookies.get("name");
 }
+
+
+console.log(inventory("item"));
 });
 
 
@@ -16,5 +21,3 @@ function inventory(item) {
   
     
     
-Cookies.set("name", "value");
-console.log(Cookies.get("name")); // => 'value'
