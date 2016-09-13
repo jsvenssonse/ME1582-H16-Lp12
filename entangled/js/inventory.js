@@ -9,13 +9,12 @@ function inventory(item) {
  
     return saveInventory;
 }
-    
-
-    
-console.log(inventory("hej"));
 });
 
 
 
   
     
+    
+Cookies.set("name", "value");
+console.log(Cookies.get("name")); // => 'value'
