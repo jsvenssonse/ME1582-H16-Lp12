@@ -7,36 +7,27 @@
             //Spelarens storlek i pixlar
             var playerSize = 40;
 
-            //Tomma arrays att pusha in .stop-divarnas positioner och storlekar i.
-            var stopTop = [];
-            var stopLeft = [];
-            var stopHeight = [];
-            var stopWidth = [];
-
             //Kan spelaren röra på sig?
             var canMove = [true];
+            currentKey = 0;
 
+            var blocks = [];
 
             //En each-funktion för att hämta ut och pusha in positioner/storlekar från .stop-divarna till arrayerna.
 
             $(".stop").each(function(i) {
+                var getPosition =  $(this).position();
+                var first = $(this).attr('class').split(" ")[0];
+                blocks.push({
+                  top: getPosition.top,
+                  left: getPosition.left,
+                  height: $(this).height(),
+                  width: $(this).width(),
+                  type: first,
+            });
 
-                //Hämta bredden och höjden av alla .stop-divar.
-                var getWidth = $(this).width();
-                var getHeight = $(this).height();
-
-                //Pusha in värdena i Arrays.
-                stopWidth.push(getWidth);
-                stopHeight.push(getHeight);
-
-                //Hämta positionen på alla .stop-divar.
-                var getPositions =  $(this).position();
-                var newTop = getPositions.top;
-                var newLeft = getPositions.left;
-
-                //Pusha in värdena i Arrays.
-                stopTop.push(newTop);
-                stopLeft.push(newLeft);
+                console.log(blocks);
+                    // ^that shit doesnt work, alla blocken får samma properties som första blocket.
 
             });
 
@@ -45,14 +36,15 @@
             function checkForBlocks(a) {
 
                 //För varje .stopdiv (genom att använda antalet platser i stopTop-arrayen)
-                for (i = 0; i < stopTop.length; i++) {
+                for (i = 0; i < blocks.length; i++) {
                     //Bara matte...
-                    var bottomBox = ((stopHeight[i] + stopTop[i]));
-                    var rightBox = (stopLeft[i] + stopWidth[i]);
-                    var leftBox = (stopLeft[i] - playerSize);
-                    var topBox = (stopTop[i] - playerSize);
+                    
+                    var bottomBox = (blocks[i].height + blocks[i].top);
+                    var rightBox = (blocks[i].left + blocks[i].width);
+                    var leftBox = (blocks[i].left - playerSize);
+                    var topBox = (blocks[i].top - playerSize);
 
-                    //Om spelaren är för nära en .stop-div.
+
                     if (a.top > topBox && (a.top < bottomBox) && a.left < rightBox  && (a.left > leftBox))  {
 
                         //Pusha in "false" i rätt plats i canMove.
@@ -63,11 +55,13 @@
                         //Pusha in "true" i rätt plats i canMove.
                         canMove[i] = true;
                         }
+
+
+
                     }
+                   
             }
 
-            //Uppdatera spelarens position i webbläsaren så man kan se (ska tas bort sen)
-            $('#box').html("Left:" + $('#box').position().left + "<br> Top" +  $('#box').position().top);
 
 
             //Rör på spelaren
@@ -79,6 +73,7 @@
 
                 //Gå till höger.
                 if(pk.keyCode == '37' && pos.left >= '1') {
+                    currentKey == 37;
                     pos.left -= playerSpeed;
                     checkForBlocks(pos);
                     if(jQuery.inArray(false, canMove) == -1) {
@@ -87,6 +82,7 @@
 
                 //Gå till vänster.
                 if(pk.keyCode == '39' && pos.left <= '790') {
+                    currentKey == 39;
                     pos.left += playerSpeed;
                     checkForBlocks(pos);
                     if(jQuery.inArray(false, canMove) == -1) {
@@ -94,7 +90,8 @@
                     }
 
                 //Gå neråt.
-                if(pk.keyCode == '38' && pos.top >= '1') {      
+                if(pk.keyCode == '38' && pos.top >= '1') {    
+                    currentKey == 38;  
                     pos.top -= playerSpeed;
                     checkForBlocks(pos);
                     if(jQuery.inArray(false, canMove) == -1) {
@@ -103,15 +100,12 @@
 
                 //Gå uppåt.
                 if(pk.keyCode == '40' && pos.top <= '435') {
+                    currentKey == 40;
                     pos.top += playerSpeed;
                     checkForBlocks(pos);
                     if(jQuery.inArray(false, canMove) == -1) {
                     $('#box').css('top', pos.top + 'px');}
                     }
-
-                    //Uppdatera spelarens position i webbläsaren så man kan se (ska tas bort sen)
-                    $('#box').html("Left:" + pos.left + "<br> Top" + pos.top);
-
 
             });
 
