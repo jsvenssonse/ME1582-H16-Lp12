@@ -251,6 +251,6 @@
             });
 
             //------------------------------------------------------------------------------------------------
-            var items = [Cookies.get("items").replace('[','').replace(']','').replace('{','').replace('}','')]
+            var items = [Cookies.get("items").replace(/\[|\]|\{|\}|/g,'')]
 console.log(items);
     });
