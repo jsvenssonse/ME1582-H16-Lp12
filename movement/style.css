@@ -22,23 +22,32 @@ body {
     position:absolute;
     width:40px; height:40px;    
 	background: url(img/player.png);
-    bottom: 0;
-    left: 50%;
+    top: 200px;
+    left: 20px;
     font-size: 10px;
     font-family: verdana;
 	z-index: 5;
 }
 
-.stopOne {
+#stopOne {
+	position: absolute;
+	left: 0px;
+	top: 0px;
+	width: 120px;
+	height: 120px;
+	background: url(img/wallpaper2.png);
+}
+
+#stopFour{
 	position: absolute;
 	right: 0px;
 	top: 0px;
-	width: 100%;
+	width: 670px;
 	height: 120px;
-	background: url(img/wallpaper.png);
+	background: url(img/wallpaper2.png);
 }
 
-.stopTwo {
+#stopTwo {
 	position: absolute;
 	left: 0px;
 	top: 410px;
@@ -48,7 +57,7 @@ body {
 }
 
 
-.stopThree {
+#stopThree {
 	position: absolute;
 	right: 220px;
 	top: 220px;
@@ -59,13 +68,23 @@ body {
 
 
 
-.doorOne {
+#doorOne {
 	width: 50px;
-	height: 80px;
+	height: 120px;
 	position: absolute;
 	left: 120px;
-	top: 40px;
-	background: url(img/door1.png);
+	top: 0px;
+	background: url(img/doorOne.png);
+}
+
+
+#doorTwo {
+	width: 50px;
+	height: 120px;
+	position: absolute;
+	left: 180px;
+	top: 0px;
+	background: url(img/doorOne.png);
 }
 
 .sconce {
