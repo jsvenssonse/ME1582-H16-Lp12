@@ -1,34 +1,21 @@
-$(document).ready(function(){
-    var item;
+
+
     // fix dynamisk to add more objects the more items we add for loop
-    function inventory(item) {
+    function inventory(item, top,left) {
         var saveInventory;
         saveInventory = [{
-        "name" : item
-        }]; 
+        "name" : item,
+        "top" : top,
+        "left" : left
+        }];
+        
+        
 
-    var setCookie = Cookies.set("name", saveInventory);
-
-
-        return Cookies.get("name");
+        var setCookie = Cookies.set("items", saveInventory);
+        
     }
 
-    //Static items for the game
-    function itemArray() {
-        var itemArray;
-        itemArray = [
-        {
-        "name" : "keyOne",
-        "img" : "../graphics/nyckel1.png"
-        },
-        {
-        "name" : "keyTwo",
-        "img" : "../graphics/nyckel2.png"
-        }
-
-    ]; 
-        return itemArray;
-    }
+    
 
     function saveState(unlocked, index) {
         var saveState;
@@ -72,16 +59,11 @@ $(document).ready(function(){
 
     }
 
-            console.log($('#items'));
+            /*console.log($('#items'));
 
-    console.log(saveState(0, 1));
+    console.log(saveState(0, 1));*/
 
-    console.log(Cookies.getJSON('save'))
-
-
-});
-
-
+    console.log(Cookies.getJSON('name'))
 
   
     

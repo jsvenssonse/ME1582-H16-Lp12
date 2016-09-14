@@ -62,7 +62,7 @@
                     //-----------------------------------------------------------------------[checkForBlocks()]
 
                     //Om objektet är ett hinder eller en dörr
-                    if (blocks[i].type == "stop" || blocks[i].type == "door") {
+                    if (blocks[i].type == "stop" || blocks[i].type == "door" || blocks[i].type == "item") {
 
                         //Är spelaren nära?
                         if (a.top > tBox && (a.top < bBox) && a.left < rBox  && (a.left > lBox))  {
@@ -135,8 +135,8 @@
                     if (blocks[i].type == "door") {
                     var bBox = (blocks[i].height + (blocks[i].top + 10));
                     var rBox = (blocks[i].left + (blocks[i].width + 10));
-                    var lBox = (blocks[i].left - (playerSize - 10));
-                    var tBox = (blocks[i].top - (playerSize - 10)); 
+                    var lBox = (blocks[i].left - (playerSize + 10));
+                    var tBox = (blocks[i].top - (playerSize + 10)); 
 
                     //-----------------------------------------------------------------------[checkForDoors()]
 
@@ -150,6 +150,45 @@
                             $("#" + blocks[i].id + "").css({'background-image':'url(img/' + blocks[i].type + 'Open.png)'});
 
                             //Ta bort dörren från blocks[]
+                            blocks.splice(0,blocks.length);
+                            calculateBlocks();
+                            canMove[i] = true;
+                        }      
+                    }                 
+                }
+            }
+
+            function checkForItems(a) {
+
+                //Loopa igenom alla objekten först.
+                for (i = 0; i < blocks.length; i++) {
+
+                    //Hitta dörrarna.
+                    if (blocks[i].type == "item") {
+                    var bBox = (blocks[i].height + (blocks[i].top + 10));
+                    var rBox = (blocks[i].left + (blocks[i].width + 10));
+                    var lBox = (blocks[i].left - (playerSize + 10));
+                    var tBox = (blocks[i].top - (playerSize + 10)); 
+
+                    //-----------------------------------------------------------------------[checkForItems()]
+
+                    //Undersök ifall spelaren är nära items.
+
+                        if (a.top > tBox && (a.top < bBox) && a.left < rBox  && (a.left > lBox))  {
+                            console.log(blocks[i].id);
+                            $("#" + blocks[i].id + "").removeClass("stop"); //Ta bort klassen 'stop' på items.
+
+                            $("#" + blocks[i].id + "").hide(); //Ta bort klassen 'stop' på items.
+                            
+
+                            
+                            var newPosition = $("#inventory").prepend("<img  src='img/"+ blocks[i].id +".png' id='item'/>").position(); //Ta bort klassen 'stop' på items.
+                            console.log(newPosition);
+                            inventory(blocks[i].id, newPosition.top, newPosition.left)
+                            
+                            
+
+                            //Ta bort items från blocks[]
                             blocks.splice(0,blocks.length);
                             calculateBlocks();
                             canMove[i] = true;
@@ -205,10 +244,13 @@
                 //Öppna dörrar (Mellanslag)
                 if(pk.keyCode == '32') {
                     checkForDoors(pos);
+                    checkForItems(pos);
                     }
+
 
             });
 
             //------------------------------------------------------------------------------------------------
-
+            var items = [Cookies.get("items").replace('[','').replace(']','').replace('{','').replace('}','')]
+console.log(items);
     });
