@@ -1,0 +1,9 @@
+body{
+
+}
+.puzzel_way{
+	background: url(../graphics/puzzel_lvl/puzzel.png) !important;
+	z-index: 1;
+	width:224px;
+	height:140px;
+	}
