@@ -14,8 +14,8 @@ body {
 	color: #000;
 }
 
-.stop {
-	z-index: 4;
+.stop, .movable {
+	z-index: 5;
 }
 
 #box {
@@ -26,7 +26,7 @@ body {
     left: 20px;
     font-size: 10px;
     font-family: verdana;
-	z-index: 5;
+	z-index: 10;
 }
 
 #stopOne {
@@ -87,6 +87,16 @@ body {
 	background: url(img/doorOne.png);
 }
 
+
+#stopFive {
+	width: 50px;
+	height: 50px;
+	position: absolute;
+	left: 180px;
+	top: 190px;
+	background: url(img/wood_2.png);
+}
+
 .sconce {
 	width: 51px;
 	height: 63px;
@@ -104,3 +114,21 @@ body {
 	z-index: 300;
 }
 
+
+.painting2 {
+	width: 78px;
+	height: 96px;
+	position: absolute;
+	background: url(img/painting_2.png);
+	z-index: 300;
+}
+
+
+
+.mat1 {
+	width: 178px;
+	height: 105px;
+	position: absolute;
+	background: url(img/mat_1.png);
+	z-index: 5;
+}
