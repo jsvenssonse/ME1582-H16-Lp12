@@ -1,1 +1,0 @@
-Where the javascript files are created

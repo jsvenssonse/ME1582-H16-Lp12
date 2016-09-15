@@ -132,3 +132,22 @@ body {
 	background: url(img/mat_1.png);
 	z-index: 5;
 }
+
+#inventory {
+	width: 153px;
+	height: 78px;
+	background-image: url(img/inventory.png);
+	position: absolute;
+	top: 550px;
+	left: 500px;
+}
+
+.key {
+	width: 20px;
+	height: 30px;
+	background-image: url(img/keyOne.png);
+	background-repeat: no-repeat;
+	position: absolute;
+	top: 250px;
+	left: 250px;
+}
