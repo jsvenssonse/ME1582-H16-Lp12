@@ -1,0 +1,153 @@
+
+body {
+	background-color: #d5d3d3;
+}
+
+.displayContent {
+	width: 840px;
+	height: 500px;
+	background: url(img/floorBlock.png);
+    position:absolute;
+    top: 25px;
+    left: 350px;
+	border: 10px solid white;
+	color: #000;
+}
+
+.stop, .movable {
+	z-index: 5;
+}
+
+#box {
+    position:absolute;
+    width:40px; height:40px;    
+	background: url(img/player.png);
+    top: 200px;
+    left: 20px;
+    font-size: 10px;
+    font-family: verdana;
+	z-index: 10;
+}
+
+#stopOne {
+	position: absolute;
+	left: 0px;
+	top: 0px;
+	width: 120px;
+	height: 120px;
+	background: url(img/wallpaper2.png);
+}
+
+#stopFour{
+	position: absolute;
+	right: 0px;
+	top: 0px;
+	width: 670px;
+	height: 120px;
+	background: url(img/wallpaper2.png);
+}
+
+#stopTwo {
+	position: absolute;
+	left: 0px;
+	top: 410px;
+	width: 200px;
+	height: 50px;
+	background: url(img/cobble_one.png);
+}
+
+
+#stopThree {
+	position: absolute;
+	right: 220px;
+	top: 220px;
+	width: 200px;
+	height: 100px;
+	background: url(img/cobble_one.png);
+}
+
+
+
+#doorOne {
+	width: 50px;
+	height: 120px;
+	position: absolute;
+	left: 120px;
+	top: 0px;
+	background: url(img/doorOne.png);
+}
+
+
+#doorTwo {
+	width: 50px;
+	height: 120px;
+	position: absolute;
+	left: 180px;
+	top: 0px;
+	background: url(img/doorOne.png);
+}
+
+
+#stopFive {
+	width: 50px;
+	height: 50px;
+	position: absolute;
+	left: 180px;
+	top: 190px;
+	background: url(img/wood_2.png);
+}
+
+.sconce {
+	width: 51px;
+	height: 63px;
+	position: absolute;
+	background: url(img/sconce.png);
+	z-index: 300;
+}
+
+
+.painting {
+	width: 84px;
+	height: 98px;
+	position: absolute;
+	background: url(img/painting.png);
+	z-index: 300;
+}
+
+
+.painting2 {
+	width: 78px;
+	height: 96px;
+	position: absolute;
+	background: url(img/painting_2.png);
+	z-index: 300;
+}
+
+
+
+.mat1 {
+	width: 178px;
+	height: 105px;
+	position: absolute;
+	background: url(img/mat_1.png);
+	z-index: 5;
+}
+
+#inventory {
+	width: 153px;
+	height: 78px;
+	background-image: url(img/inventory.png);
+	position: absolute;
+	top: 550px;
+	left: 500px;
+}
+
+.key {
+	width: 20px;
+	height: 30px;
+	background-image: url(img/keyOne.png);
+	background-repeat: no-repeat;
+	position: absolute;
+	top: 250px;
+	left: 250px;
+}
