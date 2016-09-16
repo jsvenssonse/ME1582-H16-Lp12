@@ -1,21 +1,47 @@
 
 
-    // fix dynamisk to add more objects the more items we add for loop
-    function inventory(item, top,left) {
+   
+    function inventory(item, top,left,inInventory) {
         var saveInventory;
         saveInventory = [{
-        "name" : item,
+        "name" : item,   // FIX dynamisk to add more objects the more items we add for loop
         "top" : top,
-        "left" : left
+        "left" : left,
+        "inInventory" : inInventory
         }];
         
+
         
 
         var setCookie = Cookies.set("items", saveInventory);
         
     }
 
+    function inInventory() {
+       
+    }
     
+    function updateCookies() {
+        var items = [Cookies.get("items").replace(/\[|\]|\{|\}|top|left|inInventory|/g,'').split(",").splice(1, 4)]
+        var top = items[0][0].replace(/\"|:|/g, '');
+        var left = items[0][1].replace(/\"|:|/g, '');
+        var inInventory = items[0][2].replace(/\"|:|/g, '');
+        var positions = [{
+            top: top,
+            left: left,
+            inInventory: inInventory
+        }]
+       
+        return positions;
+    }
+    function updateField(removeDiv) {
+
+        
+            $("#" + removeDiv + "").hide(removeDiv);
+            $("#" + removeDiv + "").remove(removeDiv);
+             $("#inventory").prepend("<img  src='img/"+ removeDiv +".png' id='item'/>").position();
+   
+    }
 
     function saveState(unlocked, index) {
         var saveState;
@@ -63,7 +89,6 @@
 
     console.log(saveState(0, 1));*/
 
-    console.log(Cookies.getJSON('name'))
 
   
     

@@ -37,13 +37,25 @@
                     });
 
                 });
+                
+               
             }
 
             //------------------------------------------------------------------------------------------------
 
             //Kalkylera och lägg in information i blocks[];
             calculateBlocks();
-
+            console.log(blocks[5])
+          for (i = 0; i < blocks.length; i++) {
+                if (blocks[i].type == "item") {
+                    if(typeof(updateCookies()[0]) == "undefined") {
+                        console.log("undefined");
+                    }
+                    else if(updateCookies()[0].inInventory == 1) {
+                        updateField(blocks[i].id);
+                    }
+                }
+            }
             //------------------------------------------------------------------------------------------------
             
             //checkForBlocks: Undersöker ifall spelaren är i närheten av ett av objekten i blocks[].
@@ -175,19 +187,22 @@
                     //Undersök ifall spelaren är nära items.
 
                         if (a.top > tBox && (a.top < bBox) && a.left < rBox  && (a.left > lBox))  {
-                            console.log(blocks[i].id);
+                          
                             $("#" + blocks[i].id + "").removeClass("stop"); //Ta bort klassen 'stop' på items.
+                            $("#" + blocks[i].id + "").hide(blocks[i].id);
+                            $("#" + blocks[i].id + "").remove(blocks[i].id);
 
-                            $("#" + blocks[i].id + "").hide(); //Ta bort klassen 'stop' på items.
-                            
+                            if($("#" + blocks[i].id + "").remove(blocks[i].id)) {
+                                var newPosition = $("#inventory").prepend("<img  src='img/"+ blocks[i].id +".png' id='item'/>").position(); //Ta bort klassen 'stop' på items.
+                                inventory(blocks[i].id, newPosition.top, newPosition.left, 1);
+                            } 
 
+                           
                             
-                            var newPosition = $("#inventory").prepend("<img  src='img/"+ blocks[i].id +".png' id='item'/>").position(); //Ta bort klassen 'stop' på items.
-                            console.log(newPosition);
-                            inventory(blocks[i].id, newPosition.top, newPosition.left)
-                            
-                            
+                          
+                            console.log(updateCookies()[0]);
 
+                            console.log(Cookies.get("items"));
                             //Ta bort items från blocks[]
                             blocks.splice(0,blocks.length);
                             calculateBlocks();
@@ -196,6 +211,8 @@
                     }                 
                 }
             }
+
+        
 
             //------------------------------------------------------------------------------------------------
 
@@ -251,6 +268,6 @@
             });
 
             //------------------------------------------------------------------------------------------------
-            var items = [Cookies.get("items").replace(/\[|\]|\{|\}|/g,'')]
-console.log(items);
+            
+                            console.log(Cookies.get("items"));
     });
