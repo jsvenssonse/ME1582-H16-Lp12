@@ -2,7 +2,7 @@ body{
 
 }
 #puzzel_way{
-	background: url(../graphics/puzzel_lvl/puzzel.png) !important;
+	background: url(../img/puzzel_lvl/puzzel.png) !important;
 	
 	width:224px;
 	height:140px;
@@ -10,7 +10,7 @@ body{
 	margin-left: 320px;
 	}
 #block{
-	background: url(../graphics/puzzel_lvl/1473855148.png) !important;
+	background: url(../img/puzzel_lvl/1473855148.png) !important;
 	position: absolute;
 	width:152px;
 	height:156px;	
@@ -18,7 +18,7 @@ body{
 	top:110px;
 	}
 #TNT{
-	background: url(../graphics/puzzel_lvl/1473932667.png) !important;
+	background: url(../img/puzzel_lvl/1473932667.png) !important;
 	position: absolute;
 	width:104px;
 	height:168px;	
@@ -26,7 +26,7 @@ body{
 	top:320px;
 }
 #TNT{
-	background: url(../graphics/puzzel_lvl/1473932667.png) !important;
+	background: url(../img/puzzel_lvl/1473932667.png) !important;
 	position: absolute;
 	width:104px;
 	height:168px;	
@@ -34,7 +34,7 @@ body{
 	top:320px;
 }
 #chest{
-	background: url(../graphics/puzzel_lvl/1473933008.png) !important;
+	background: url(../img/puzzel_lvl/1473933008.png) !important;
 	position: absolute;
 	width:104px;
 	height:80px;	

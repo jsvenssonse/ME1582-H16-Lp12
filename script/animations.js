@@ -20,7 +20,7 @@
 
             //calculateBlocks: Hämtar all information från alla divar med klassen .stop, 
             //och organiserar det som objekt i 'blocks[];'
-
+  
             //-------------------------------------------------------------------------------[calculatelocks()]
             function calculateBlocks() {
                 $(".stop").each(function(i) {
@@ -42,20 +42,41 @@
             }
 
             //------------------------------------------------------------------------------------------------
-
+inventory(0,0,0,0);
+  if (updateCookies()[0].inInventory == 0) {
+                            $('.displayContent').prepend('<div class="item stop key" id="keyOne"></div>');
+                            
+                        }
             //Kalkylera och lägg in information i blocks[];
             calculateBlocks();
-            console.log(blocks[5])
+                            
+
           for (i = 0; i < blocks.length; i++) {
                 if (blocks[i].type == "item") {
-                    if(typeof(updateCookies()[0]) == "undefined") {
-                        console.log("undefined");
-                    }
-                    else if(updateCookies()[0].inInventory == 1) {
+                    
+              
+                    if(updateCookies()[0].inInventory == 1) {
                         updateField(blocks[i].id);
-                    }
-                }
+                        blocks.splice(0,blocks.length);
+                        calculateBlocks();
+                    } 
+                    if (updateCookies()[0].inInventory == 0) {
+                            $('.displayContent').prepend('<div class="item stop key" id="keyOne"></div>');
+                            blocks.splice(0,blocks.length);
+                            calculateBlocks();
+                        }
+
+                    
+                    
+             }
+              
+
+           
+           
             }
+
+                
+                console.log(updateCookies()[0].inInventory)        
             //------------------------------------------------------------------------------------------------
             
             //checkForBlocks: Undersöker ifall spelaren är i närheten av ett av objekten i blocks[].
@@ -74,7 +95,7 @@
                     //-----------------------------------------------------------------------[checkForBlocks()]
 
                     //Om objektet är ett hinder eller en dörr
-                    if (blocks[i].type == "stop" || blocks[i].type == "door" || blocks[i].type == "item") {
+                    if (blocks[i].type !== "movable") {
 
                         //Är spelaren nära?
                         if (a.top > tBox && (a.top < bBox) && a.left < rBox  && (a.left > lBox))  {
@@ -157,7 +178,7 @@
                         if (a.top > tBox && (a.top < bBox) && a.left < rBox  && (a.left > lBox))  {
 
                             $("#" + blocks[i].id + "").removeClass("stop"); //Ta bort klassen 'stop' på dörren.
-
+                            
                             //Ändra bakgrundsbilden till en öppen dörr.
                             $("#" + blocks[i].id + "").css({'background-image':'url(img/' + blocks[i].type + 'Open.png)'});
 
@@ -189,23 +210,18 @@
                         if (a.top > tBox && (a.top < bBox) && a.left < rBox  && (a.left > lBox))  {
                           
                             $("#" + blocks[i].id + "").removeClass("stop"); //Ta bort klassen 'stop' på items.
-                            $("#" + blocks[i].id + "").hide(blocks[i].id);
-                            $("#" + blocks[i].id + "").remove(blocks[i].id);
-
-                            if($("#" + blocks[i].id + "").remove(blocks[i].id)) {
-                                var newPosition = $("#inventory").prepend("<img  src='img/"+ blocks[i].id +".png' id='item'/>").position(); //Ta bort klassen 'stop' på items.
-                                inventory(blocks[i].id, newPosition.top, newPosition.left, 1);
-                            } 
+                            $("#" + blocks[i].id + "").hide("#" + blocks[i].id + "");
+                            $("#" + blocks[i].id + "").remove("#" + blocks[i].id + "");
+                            var newPosition = $("#inventory").prepend("<img  src='img/"+ blocks[i].id +".png' id='item'/>").position(); //Ta bort klassen 'stop' på items.
+                            inventory(blocks[i].id, newPosition.top, newPosition.left, 1);
+                               
 
                            
                             
-                          
-                            console.log(updateCookies()[0]);
-
-                            console.log(Cookies.get("items"));
                             //Ta bort items från blocks[]
                             blocks.splice(0,blocks.length);
                             calculateBlocks();
+                            console.log(blocks)
                             canMove[i] = true;
                         }      
                     }                 
@@ -269,5 +285,5 @@
 
             //------------------------------------------------------------------------------------------------
             
-                            console.log(Cookies.get("items"));
+                            console.log(blocks);
     });

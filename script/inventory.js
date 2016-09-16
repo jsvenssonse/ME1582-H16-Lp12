@@ -22,6 +22,7 @@
     }
     
     function updateCookies() {
+
         var items = [Cookies.get("items").replace(/\[|\]|\{|\}|top|left|inInventory|/g,'').split(",").splice(1, 4)]
         var top = items[0][0].replace(/\"|:|/g, '');
         var left = items[0][1].replace(/\"|:|/g, '');
@@ -37,7 +38,7 @@
     function updateField(removeDiv) {
 
         
-            $("#" + removeDiv + "").hide(removeDiv);
+            $("#" + removeDiv + "").css("display", "none");
             $("#" + removeDiv + "").remove(removeDiv);
              $("#inventory").prepend("<img  src='img/"+ removeDiv +".png' id='item'/>").position();
    
