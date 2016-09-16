@@ -1,1 +1,0 @@
-The graphics for the game entangled
