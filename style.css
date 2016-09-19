@@ -20,7 +20,7 @@ body {
 
 #box {
     position:absolute;
-    width:40px; height:40px;    
+    width:40px; height:40px;
 	background: url(img/player.png);
     top: 200px;
     left: 20px;
@@ -150,4 +150,45 @@ body {
 	position: absolute;
 	top: 250px;
 	left: 250px;
+}
+
+#wallOne{
+	position: absolute;
+	right: 0px;
+	top: 120px;
+	width: 100px;
+	height: 100px;
+	background: url(img/cobble_one.png)
+}
+#wallTwo{
+	position: absolute;
+	right: 200px;
+	top: 260px;
+	width: 100px;
+	height: 100px;
+	background: url(img/cobble_one.png)
+}
+#wallThree{
+	position: absolute;
+	right: 500px;
+	top: 260px;
+	width: 100px;
+	height: 100px;
+	background: url(img/cobble_one.png)
+}
+#wallFour{
+	position: absolute;
+	right: 800px;
+	top: 150px;
+	width: 100px;
+	height: 100px;
+	background: url(img/cobble_one.png)
+}
+#wallFive{
+	position: absolute;
+	right: 400px;
+	top: 500px;
+	width: 100px;
+	height: 100px;
+	background: url(img/cobble_one.png)
 }
