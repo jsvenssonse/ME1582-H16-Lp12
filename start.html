@@ -1,8 +1,46 @@
-<script src="js/js-cookie.js"></script>
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <title>Entanglement</title>
 
-<script src="js/inventory.js"></script>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+        <script src="script/jquery-3.1.0.min.js"></script>
+        <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.11.0/jquery-ui.min.js"></script>
+        <script src="script/js-cookie.js"></script>
+        <script src="script/inventory.js"></script>
+        <script src="script/animations.js"></script>
+        <link href="css/style.css" type="text/css" rel="stylesheet" /> 
+        <link href="css/start.css" type="text/css" rel="stylesheet" /> 
 
-<div id="items"></div>
+    </head>
 
-<link rel="stylesheet" href="css/style.css">
+      <body>
+
+
+      <div class="displayContent" id="startMap">
+      <div id="box" style="bottom: 120px; left: 280px;"></div>
+
+
+      	<div class="entry static collision" id="entangled" style="left: 275px;"></div>
+      	<div class="entry static collision" id="secretroom" style="left: 170px;"></div>
+
+
+
+      	<div class="static collision startWall" id="wall1" style="left: 0px; width: 170px;"></div>
+      	<div class="static collision startWall"id="wall2" style="left: 220px; width: 55px;"></div>
+      	<div class="static collision startWall" id="wall3" style="right: 220px; width: 55px;"></div>
+      	<div class="static collision startWall" id="wall4" style="right: 0px; width: 170px;"></div>
+      	<div class="startWall" style="right: 170px; width: 260px; height: 45px; z-index: 1000;"></div>
+
+
+      	<div class="door collision" id="paintingDoor"></div>
+      	<div class="door collision" id="entangledDoor"></div>
+      	<div class="door collision" id="diffractionDoor"></div>
+
+          <div class="sconce deco" style="top: 20px; left: 50px; z-index: 500;"></div>
+          <div class="sconce deco" style="top: 20px; right: 50px; z-index: 500;"></div>
+
+      </div>
+
+      </body>
+      </html>
