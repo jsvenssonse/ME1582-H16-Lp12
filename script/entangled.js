@@ -1,87 +1,50 @@
-          function openEntangledChest() {
 
-                            $("#entangledChest").html("<img src='img/chestOpen.png' style='margin-top: -20px;'>");
+            //--------------------------------------------------------------------------------------[Variabler]
+            //Variabler som tillåter en att plocka upp items
 
+            var diffKey = false;
+            var pickupDiamond = false;
 
-                             var i = 0, howManyTimes = 15;
-                                function sparkles() {
-                                    var sparkleRight = Math.floor((Math.random()*(458-495+1)+495));
-                                    var sparkleSpeed = Math.floor((Math.random()*(1500-1000+1)+1000));
-                                    var sparkleShape = Math.floor((Math.random()*(3-2+1)+2));
-                                    var sparkleTop = Math.floor((Math.random()*(273-300+1)+273));
-                                    console.log(sparkleShape);
-                                    $(".displayContent").append("<div class='sparkle' style='left: "+ sparkleRight + "px; background-image: url(img/sparkle" + sparkleShape + ".png')></div>");
-                                    $(".sparkle").animate({
-                                    top: "" + sparkleTop +"",
-                                    opacity: 0,
-                                    }, sparkleSpeed);
-                                    $(".sparkle").fadeOut();
-
-                                    i++;
-                                    if( i < howManyTimes ){
-                                        setTimeout( sparkles, 50 );
-                                    }
-                                }
-                                sparkles();
-
-            }
+            //--------------------------------------------------------------------------------------[explodeBars]
+            //Ta sönder gallret
 
             function explodeBars() {
                             $("#bars").css("background", "url(img/entangled/bars.gif)");
                             $("#bars").animate({
                                   height: "0",
-                                  top: "360",
-                              }, 4000);
+                                  top: "440",
+                              }, 2000);
 
+                                risingEffect(20, "smoke", 515, 475, 400, 435);
 
-                                var i = 0, howManyTimes = 50;
-                                function smokeCloud() {
-                                    var smokeRight = Math.floor((Math.random()*(475-509+1)+509));
-                                    var smokeSpeed = Math.floor((Math.random()*(1500-1000+1)+1000));
-                                    var smokeShape = Math.floor((Math.random()*(2-1+1)+1));
-                                    var smokeTop = Math.floor((Math.random()*(300-280+1)+320));
-                                    $(".displayContent").append("<div class='smoke' style='left: "+ smokeRight + "px; background-image: url(img/smoke" + smokeShape + ".png')></div>");
-                                    $(".smoke").animate({
-                                    top: "" + smokeTop +"",
-                                    opacity: 0,
-                                    }, smokeSpeed);
-                                    $(".smoke").fadeOut();
-
-                                    i++;
-                                    if( i < howManyTimes ){
-                                        setTimeout( smokeCloud, 50 );
-                                    }
-                                }
-                                smokeCloud();
             }
 
+            //--------------------------------------------------------------------------------------[checkInteractable]
+            //Kollar allt som kan göras
+            
 
-
-            function removeBars() {
+            function checkInteractable() {
 
                 //Loopa igenom alla objekten först.
                 for (i = 0; i < blocks.length; i++) {
+
+                    //KNAPPAR
 
                     if (blocks[i].type == "button") {
                         var collide = colliding(player, 10);
                          if(collide == true) {
 
+                            //GREEN BUTTON
                             if (blocks[i].id == "greenButton") {
-                            $("#bars").removeClass("stop"); //Ta bort klassen 'stop' 
 
-                            explodeBars();
-                            $("#" + blocks[i].id + "").removeClass("button");
-                            $("#col45").removeClass("stop"); //Ta bort klassen 'stop' 
-                            $("#col45").hide(); //Ta bort klassen 'stop' på items.
-                            $("#greenButtonMirror").removeClass("stop"); //Ta bort klassen 'stop' 
-                            $("#greenButtonMirror").hide(); //Ta bort klassen 'stop' på items.
-                            //Ta bort items från blocks[]
+                            explodeBars(); 
+
+                            $("#greenButton, #col45, #greenButtonMirror, #bars").removeClass("collision");
                             blocks.splice(0,blocks.length);
                             calculateBlocks();   
                             }
 
-
-
+                            //BLACK BUTTON
                             if (blocks[i].id == "greenButtonMirror") {  
                                  $("#mirrorExpression, #boxExpression").show();
                                  $("#boxExpression").html("<img src='img/entangled/exclamationMark.png'/>");
@@ -90,7 +53,62 @@
 
                             }                            
                         }      
-                    }                 
+                    }
+
+                    //KISTA
+                    if (blocks[i].type == "chest") {
+                        var collide = colliding(player, 10);
+                         if(collide == true) {
+                            $("#entangledChest").html("<img src='img/chestOpen.png' style='margin-top: -20px;'>");
+                            $(".diffractionKey").css("display", "block");
+                                if (diffKey == false) {
+                                risingEffect(15, "sparkle", 495, 458, 323, 363);
+                                }
+                             setTimeout(function(){diffKey = true;}, (200));
+                        }
+                    }     
+
+                    //TAVLA
+                    if (blocks[i].type == "enPainting") {
+                        var collide = colliding(player, 40);
+                         if(collide == true) {
+
+                            $(".enPainting").animate({
+                                  height: "0",
+                                  top: "76",
+                              }, 2000);
+
+                            $(".enPainting").removeClass("collision");
+                            setTimeout(function(){pickupDiamond = true;}, 1000);
+
+                            blocks.splice(0,blocks.length);
+                            calculateBlocks();   
+
+                        }      
+                    }   
+
+                    //DIFFRAKTIONSNYCKEL
+                    if (blocks[i].type == "diffractionKey") {
+                        var collide = colliding(player, 500);
+                        if(collide == true) {
+                            if (diffKey == true) {
+                               putInInventory("diffractionKey", 320);
+
+                            }
+                        }      
+                    }         
+
+
+                    //GLYPH
+                    if (blocks[i].type == "diamond") {
+                        var collide = colliding(player, 500);
+                        if(collide == true) {
+                            if (pickupDiamond == true) {
+                               putInInventory("diamond", 15); 
+                            }
+                        }     
+                    }
+
                 }
             }
 
@@ -163,15 +181,9 @@
 
             //Öppna dörrar (Mellanslag)
             if(pk.keyCode == '32') {
-                removeBars();
+                checkInteractable();
                 $('#box', '#mirror').html(''); 
                 }
 
-
-
-            //Öppna dörrar (Mellanslag)
-            if(pk.keyCode == '69') {
-                explodeBars();
-                openEntangledChest();
-                }}
+}
 

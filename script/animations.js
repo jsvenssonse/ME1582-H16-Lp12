@@ -107,11 +107,18 @@
                         setTimeout(function(){$(location).attr('href', 'file:///C:/Users/Isa/Desktop/movement/' + newPage + '.html');}, 2000);
 
                     }  
+
+                 
+
                             }      
                             else {
                                 //Om nej: Ja, vi kan gå åt det hållet.     
                                 canMove[i] = true;
+
                             }
+
+
+
                     }  
       
             }
@@ -193,6 +200,48 @@
 
 
 
+            function risingEffect(howmany, type, right, left, top, bottom) {
+
+                var i = 0, howManyTimes = howmany;
+                    function effect() {
+                        var effectRight = Math.floor((Math.random()*(left-right+1)+right));
+                        var effectSpeed = Math.floor((Math.random()*(1500-1000+1)+1000));
+                        var effectShape = Math.floor((Math.random()*(2-1+1)+1));
+                        var effectTop = Math.floor((Math.random()*(top-bottom+1)+top));
+                        $(".displayContent").append("<div class='" + type +" " + type +"" + i + "' style='left: "+ effectRight + "px; top: " + bottom +"px; background-image: url(img/" + type +"" + effectShape + ".png')></div>");
+                        $("." + type +"" + i + "").animate({
+                        top: "" + effectTop +"",
+                        opacity: 0,
+                        }, effectSpeed);
+                        $("." + type +"" + i + "").fadeOut(500);
+
+                        i++;
+                        if( i < howManyTimes ){
+                            setTimeout( effect, 50 );
+                        }
+                    }
+                    effect();
+
+                    setTimeout(function(){$("." + type +"").remove();}, (howmany * 100));
+            }
+
+
+            function putInInventory(objectID, objectTop) {
+               $("#" + objectID + "").animate({
+                      top: "" + objectTop + "",
+                      opacity: 0,
+                }, 500);
+               $("#" + objectID + "").removeClass("collision");
+               var padding = ((51 - blocks[i].height)/ 4 + 3);
+               $("#inventory").prepend("<div id='item" + objectID + "'><img  src='img/"+ objectID +".png'  style='padding-top: " + padding + "px'/></div>"); 
+                blocks.splice(0,blocks.length);
+                calculateBlocks();   
+            }
+
+
+             
+
+
 
             //------------------------------------------------------------------------------------------------
 
@@ -210,7 +259,12 @@
 
             if (map.id == "entangledMap") {
             calculateMirror();
+            }
 
+            if (map.id =="diffractionMap") {
+                setInterval(function(){ twinklingStars(1); }, 2500);
+                setInterval(function(){ twinklingStars(2); }, 2500);
+                setInterval(function(){ twinklingStars(3); }, 2500);
             }
 
             //------------------------------------------------------------------------------------------------
@@ -267,7 +321,14 @@
             if(pk.keyCode == '32') {
                 checkForDoors();
                 checkForItems();
+
+                if (map.id == "secretMap") {
                 swapPainting();
+                }
+
+                if (map.id == "diffractionMap") {
+                placeDiamond();
+                }
                 }
             });
 

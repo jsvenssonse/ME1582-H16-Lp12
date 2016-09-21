@@ -17,29 +17,61 @@
 	}
 
 	#inventory {
-		width: 153px;
-		height: 78px;
+		width: 312px;
+		height: 44px;
 		background-image: url(../img/inventory.png);
 		position: absolute;
-		top: 550px;
-		left: 500px;
+		bottom: -54px;
+		left: 0px;
+		padding-left: 72px;
 	}
 
+
+	#inventory div {
+		width: 53px;
+		height: 44px;
+		text-align: center;
+		display: inline-block;
+	}
+
+
+	.diamond {
+		width: 31px;
+		height: 31px;
+		position: absolute;
+		top: 26px;
+		left: 445px;
+		z-index: 10;
+		background-image: url(../img/diamond.png);
+	}
+
+
+	.diffractionKey {
+		width: 14px;
+		height: 26px;
+		position: absolute;
+		top: 330px;
+		right: 474px;
+		background: url(../img/diffractionKey.png);
+		z-index: 800;
+		display: none;
+	}
+
+
+
 	.smoke {
-		top: 345px;
 		width: 15px;
 		height: 14px;
 		position: absolute;
-		z-index: 1000;
+		z-index: 10000;
 	}
 
 
 	.sparkle {
-		top: 273px;
 		width: 7px;
 		height: 8px;
 		position: absolute;
-		z-index: 1000;
+		z-index: 10000;
 	}
 
 
@@ -47,101 +79,11 @@
 
 
 
-
-
-	/* --------------------------------------------------------------------------------- Testkartan */
-
-	/* --------------------------------------------------------------------------------------[Test] */
-
-
-	#testMap {
-		width: 840px;
-		height: 500px;
-		background: url(../img/floorBlock.png);
-	    top: 25px;
-	    left: 350px;
-	}
-
 	#box {
 	    position:absolute;
 	    width:40px; height:40px;    
 		background: url(../img/player.png);
 		z-index: 10;
-	}
-
-	/* ---------------------------------------------------------------------------------- Stopblock */
-
-	/* --------------------------------------------------------------------------------------[Test] */
-
-		#stopOne {
-		left: 0px;
-		top: 0px;
-		width: 120px;
-		height: 120px;
-		background: url(../img/wallpaper2.png);
-		}
-
-		#stopFour{
-			position: absolute;
-			right: 0px;
-			top: 0px;
-			width: 670px;
-			height: 120px;
-			background: url(../img/wallpaper2.png);
-		}
-
-		#stopTwo {
-			position: absolute;
-			left: 0px;
-			top: 400px;
-			width: 200px;
-			height: 50px;
-			background: url(../img/cobble_one.png);
-		}
-
-
-		#stopThree {
-			position: absolute;
-			right: 220px;
-			top: 220px;
-			width: 200px;
-			height: 90px;
-			background: url(../img/cobble_one.png);
-		}
-
-
-
-
-		#stopFive {
-			width: 50px;
-			height: 50px;
-			position: absolute;
-			left: 130px;
-			top: 210px;
-			background: url(../img/wood_2.png);
-		}
-
-	/* --------------------------------------------------------------------------------------[Test] */
-
-	/* ------------------------------------------------------------------------- Interactable items */
-
-	.key {
-		width: 20px;
-		height: 30px;
-		background-image: url(../img/keyOne.png);
-		background-repeat: no-repeat;
-		position: absolute;
-		top: 250px;
-		left: 250px;
-	}
-
-	#doorOne {
-		width: 50px;
-		height: 120px;
-		position: absolute;
-		left: 120px;
-		top: 0px;
-		background: url(../img/doorOne.png);
 	}
 
 
@@ -168,7 +110,7 @@
 		background: url(../img/decorations/sconce.png);
 	}
 
-	.painting {
+	.painting1 {
 		width: 84px;
 		height: 98px;
 		background: url(../img/decorations/painting.png);
@@ -250,7 +192,6 @@
 				top: 40px;
 			    right: 170px;
 				z-index: 5;
-
 			}
 
 			.openDoor {
@@ -267,3 +208,103 @@
 				position: absolute;
 				top: 0px;
 			}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+			
+	/* --------------------------------------------------------------------------------------[Test] 
+
+	#testMap {
+		width: 840px;
+		height: 500px;
+		background: url(../img/floorBlock.png);
+	    top: 25px;
+	    left: 350px;
+	}
+
+		#stopOne {
+		left: 0px;
+		top: 0px;
+		width: 120px;
+		height: 120px;
+		background: url(../img/wallpaper2.png);
+		}
+
+		#stopFour{
+			position: absolute;
+			right: 0px;
+			top: 0px;
+			width: 670px;
+			height: 120px;
+			background: url(../img/wallpaper2.png);
+		}
+
+		#stopTwo {
+			position: absolute;
+			left: 0px;
+			top: 400px;
+			width: 200px;
+			height: 50px;
+			background: url(../img/cobble_one.png);
+		}
+
+
+		#stopThree {
+			position: absolute;
+			right: 220px;
+			top: 220px;
+			width: 200px;
+			height: 90px;
+			background: url(../img/cobble_one.png);
+		}
+
+		#stopFive {
+			width: 50px;
+			height: 50px;
+			position: absolute;
+			left: 130px;
+			top: 210px;
+			background: url(../img/wood_2.png);
+		}
+
+
+	.key {
+		width: 20px;
+		height: 30px;
+		background-image: url(../img/keyOne.png);
+		background-repeat: no-repeat;
+		position: absolute;
+		top: 250px;
+		left: 250px;
+	}
+
+	#doorOne {
+		width: 50px;
+		height: 120px;
+		position: absolute;
+		left: 120px;
+		top: 0px;
+		background: url(../img/doorOne.png);
+	}																							
+
+																									*/

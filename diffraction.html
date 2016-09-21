@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <title>Entanglement</title>
+
+        <script src="script/jquery-3.1.0.min.js"></script>
+        <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.11.0/jquery-ui.min.js"></script>
+        <script src="script/diffraction.js"></script>
+        <script src="script/animations.js"></script>
+        <link href="css/style.css" type="text/css" rel="stylesheet" /> 
+        <link href="css/diffraction.css" type="text/css" rel="stylesheet" /> 
+
+    </head>
+
+      <body>
+
+      <!-- Spelplan -->
+      <div class="displayContent" id="diffractionMap">  
+
+
+            <!-- Inventory -->
+            <div id="inventory"><div id="itemDiamond"><img src="img/diamond.png" id="item" style="padding-top: 8px"></div></div>
+            <!-- //Inventory -->
+
+
+      <div class="static collision diffWall" style="width: 50px; left: 0px;"></div>   
+      <div class="static collision diffWall" style="width: 550px; left: 100px;"></div> 
+      <div class="diffWall" style="width: 50px; left: 50px; height: 70px; z-index: 50;"></div> 
+        <div class="entry static collision" id="start" style="left: 50px;"></div>
+        <div class="door collision" id="diffractionDoor" style="left: 50px; top: 70px;"></div> 
+
+      <!-- Spelare -->
+      <div id="box" style="top: 220px; left: 150px;"></div>
+
+      <!-- Block -->
+        <div class="prism collision" id="prism"></div> 
+        <div class="window"></div>
+        <div class="lightBeam1"></div>
+        <div class="diffBlock collision" id="diffBlock"></div>
+        <div class="diffSolution" id="diffSolution"></div>
+        <div class="starsFloor"></div>
+        <div class="twinkle1"></div>
+        <div class="twinkle2"></div>
+        <div class="twinkle3"></div>
+      <!-- Inventory -->
+
+    </body>
+</html>
