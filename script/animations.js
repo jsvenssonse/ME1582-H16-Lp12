@@ -1,155 +1,133 @@
-    $(document).ready(function() {
-
-            // ** VARIABLER **//
-
-            //Spelarens hastighet
-            var playerSpeed = 10; // Hur många pixlar framåt den rör sig när man trycker "gå".
-
-            //Spelarens storlek i pixlar
-            var playerSize = 40;
+    
 
             //Kan spelaren röra på sig?
             var canMove = [true];
+            //var nearMovable = [];
 
             //Array med alla block inlagda som objekt.
             var blocks = [];
+            var map = {};
+            var player = {};
+
+
+            // ** VARIABLER **//
+
 
             //-----------------------------------------------------------------------------------------------
             
-            // ** FUNKTIONER **// - att göra: mapsize.
+            // ** FUNKTIONER **// 
 
             //calculateBlocks: Hämtar all information från alla divar med klassen .stop, 
             //och organiserar det som objekt i 'blocks[];'
-  
-            //-------------------------------------------------------------------------------[calculatelocks()]
+
+
+            //--------------------------------------------------------------------------------------[calculate()]
+
+
+            function calculatePlayer() {
+                $("#box").each(function(i) {
+                    var getPosition =  $(this).position(); 
+                        player.top = getPosition.top;  
+                        player.left = getPosition.left;  
+                        player.bottom = getPosition.top + $(this).height(); 
+                        player.right =  getPosition.left + $(this).width(); 
+                        player.size = $(this).height();  // Den vertikala positionen
+                        player.speed =  10; // Den horisontella positionen
+                }); 
+            }
+
+            function calculateMapSize() {
+                $(".displayContent").each(function(i) {
+                        map.top = 0;  
+                        map.left = 0;  
+                        map.bottom = $(this).height()  - 5;  // Den vertikala positionen
+                        map.right =  $(this).width() - 5; // Den horisontella positionen
+                        map.id =  $(this).attr('id'); // Den horisontella positionen
+                   
+                });
+            }
+
+
             function calculateBlocks() {
-                $(".stop").each(function(i) {
+                $(".collision").each(function(i) {
                     var getPosition =  $(this).position(); // Hämta blockets position på kartan
                     var first = $(this).attr('class').split(" ")[0]; // Hämta den första klassen (door, stop)
 
                     blocks.push({
                         id: $(this).attr('id'), // Blockets ID (samma som ID:et på diven)
-                        top: getPosition.top,  // Den vertikala positionen
-                        left: getPosition.left, // Den horisontella positionen
+                        top: (getPosition.top - player.size),   
+                        left: (getPosition.left - player.size),  
+                        bottom: (getPosition.top + $(this).height() -5) ,  
+                        image: $(this).css('background-image'),  
+                        right: (getPosition.left + $(this).width()) -5,  
                         height: $(this).height(), // Höjden
                         width: $(this).width(), // Bredden
-                        type: first, // Första klassen (Door, Stop, etc)
+                        type: first, // Första klassen (Door, Collision, etc)
                     });
+                        //nearMovable.push(false);
+
 
                 });
                 
                
             }
-
             //------------------------------------------------------------------------------------------------
-inventory(0,0,0,0);
-  if (updateCookies()[0].inInventory == 0) {
-                            $('.displayContent').prepend('<div class="item stop key" id="keyOne"></div>');
-                            
-                        }
-            //Kalkylera och lägg in information i blocks[];
-            calculateBlocks();
-                            
 
-          for (i = 0; i < blocks.length; i++) {
-                if (blocks[i].type == "item") {
-                    
-              
-                    if(updateCookies()[0].inInventory == 1) {
-                        updateField(blocks[i].id);
-                        blocks.splice(0,blocks.length);
-                        calculateBlocks();
-                    } 
-                    if (updateCookies()[0].inInventory == 0) {
-                            $('.displayContent').prepend('<div class="item stop key" id="keyOne"></div>');
-                            blocks.splice(0,blocks.length);
-                            calculateBlocks();
-                        }
+ 
+        
+    
 
-                    
-                    
-             }
-              
+            
+            //colliding(): En funktion för att kolla om spelaren har gått in i ett block.
 
-           
-           
+            //-------------------------------------------------------------------------------[checkForBlocks()]
+
+            function colliding(object, radius) {
+                if ((object.top >= blocks[i].top + 5 - radius) && (object.top <= blocks[i].bottom - 5 + radius) && (object.left <= blocks[i].right - 5 + radius)  && (object.left > blocks[i].left - radius))  {
+                    return true;
+                } else {
+                    return false;
+                }
+
             }
 
                 
-                console.log(updateCookies()[0].inInventory)        
+              //  console.log(updateCookies()[0].inInventory)        
             //------------------------------------------------------------------------------------------------
             
-            //checkForBlocks: Undersöker ifall spelaren är i närheten av ett av objekten i blocks[].
+            //checkForBlocks: Körs när man går, använder sig av colliding().
 
             //-------------------------------------------------------------------------------[checkForBlocks()]
-            function checkForBlocks(a, x) {
+            function checkForBlocks(x) {
 
                 //Loopar igenom objekten i blocks[]
                 for (i = 0; i < blocks.length; i++) {
-                    
-                    var bBox = (blocks[i].height + blocks[i].top);  //Hur nära man kan komma den underifrån
-                    var tBox = (blocks[i].top - playerSize);        //Hur nära man kan komma den ovanfrån
-                    var rBox = (blocks[i].left + blocks[i].width);  //Hur nära man kan komma den från höger
-                    var lBox = (blocks[i].left - playerSize);       //Hur nära man kan komma den från vänster
-
-                    //-----------------------------------------------------------------------[checkForBlocks()]
 
                     //Om objektet är ett hinder eller en dörr
                     if (blocks[i].type !== "movable") {
 
                         //Är spelaren nära?
-                        if (a.top > tBox && (a.top < bBox) && a.left < rBox  && (a.left > lBox))  {
+                        var collide = colliding(player, 0);
+                            if(collide == true) {
 
-                            //Om ja: Nej, vi kan inte gå åt det hållet.
-                            canMove[i] = false;
-                        }      
-                        else {
-                            //Om nej: Ja, vi kan gå åt det hållet.     
-                            canMove[i] = true;
+                                //Om ja: Nej, vi kan inte gå åt det hållet.
+                                canMove[i] = false;
+
+                    if (blocks[i].type == "entry") { 
+
+                        newPage =  blocks[i].id;
+                        $(".displayContent").fadeOut(2000);
+                        setTimeout(function(){$(location).attr('href', 'http://127.0.0.1:8080/' + newPage + '.html');}, 2000);
+
+                    }  
+                            }      
+                            else {
+                                //Om nej: Ja, vi kan gå åt det hållet.     
+                                canMove[i] = true;
                             }
                     }  
- 
-
-                    //-----------------------------------------------------------------------[checkForBlocks()]
-
-                    //Om objektet är ett flyttbart block
-
-                    if (blocks[i].type == "movable") {
-
-                        //Är spelaren nära?
-                        if (a.top > tBox && (a.top < bBox) && a.left < rBox  && (a.left > lBox))  {
-
-                            //Om ja: Ja, vi kan gå dit - för blocket är knuffbart.
-                            canMove[i] = true;
-
-                            //Här knuffar vi blocket åt höger.
-                            if (x == 'right') {
-                                blocks[i].left += playerSpeed;                                      // Rör blocket åt höger i samma hastighet som spelaren.
-                                $('#' + blocks[i].id + '').css('left', blocks[i].left + 'px');      // Ompositionera blocket på kartan.
-                            }
-
-                            //Här knuffar vi blocket neråt
-                            if (x == 'left') {
-                                blocks[i].left -= playerSpeed;                                      // Rör blocket åt höger i samma hastighet som spelaren.
-                                $('#' + blocks[i].id + '').css('left', blocks[i].left + 'px');  
-                            }
-
-                            //Här knuffar vi blocket åt höger.
-                            if (x == 'down') {
-                                blocks[i].top += playerSpeed;                                      // Rör blocket åt höger i samma hastighet som spelaren.
-                                $('#' + blocks[i].id + '').css('top', blocks[i].top + 'px');      // Ompositionera blocket på kartan. 
-                            }
-
-                            //Här knuffar vi blocket åt höger.
-                            if (x == 'up') {
-                                blocks[i].top -= playerSpeed;                                      // Rör blocket åt höger i samma hastighet som spelaren.
-                                $('#' + blocks[i].id + '').css('top', blocks[i].top + 'px');      // Ompositionera blocket på kartan.  
-                            }
-
-                        }      
-
-                    }       
-               }
+      
+            }
             }
 
 
@@ -159,131 +137,172 @@ inventory(0,0,0,0);
 
             //-------------------------------------------------------------------------------[checkForDoors()]
 
-            function checkForDoors(a) {
+            function checkForDoors() {
 
                 //Loopa igenom alla objekten först.
                 for (i = 0; i < blocks.length; i++) {
 
-                    //Hitta dörrarna.
                     if (blocks[i].type == "door") {
-                    var bBox = (blocks[i].height + (blocks[i].top + 10));
-                    var rBox = (blocks[i].left + (blocks[i].width + 10));
-                    var lBox = (blocks[i].left - (playerSize + 10));
-                    var tBox = (blocks[i].top - (playerSize + 10)); 
+                        var collide = colliding(player, 10);
 
-                    //-----------------------------------------------------------------------[checkForDoors()]
+                         if(collide == true) {
+                            var bg =  blocks[i].image;
 
-                    //Undersök ifall spelaren är nära dörren.
+                            var newbg = bg.replace('.png','').replace(')','').replace(/\"/g, "").replace(/url\(/g, "");
+                            console.log(newbg);
 
-                        if (a.top > tBox && (a.top < bBox) && a.left < rBox  && (a.left > lBox))  {
 
-                            $("#" + blocks[i].id + "").removeClass("stop"); //Ta bort klassen 'stop' på dörren.
-                            
+                            $("#" + blocks[i].id + "").removeClass("collision"); //Ta bort klassen 'stop' på dörren.
+
                             //Ändra bakgrundsbilden till en öppen dörr.
-                            $("#" + blocks[i].id + "").css({'background-image':'url(img/' + blocks[i].type + 'Open.png)'});
+                            $("#" + blocks[i].id + "").css({'background-image':'url(' + newbg  +'Open.png)'});
+                            $(".displayContent").append("<img src='"+ newbg  + "Half.png' class='openDoor' style='top: " + (blocks[i].top + player.size) + "px; left: " + (blocks[i].left + player.size) +"px;'/>");
+                            console.log(blocks[i].left);
 
                             //Ta bort dörren från blocks[]
                             blocks.splice(0,blocks.length);
                             calculateBlocks();
                             canMove[i] = true;
-                        }      
-                    }                 
+                        }  
+                    }  
                 }
             }
 
-            function checkForItems(a) {
+            //------------------------------------------------------------------------------------------------
+
+
+            //------------------------------------------------------------------------------------------------
+            
+            //checkForItems: Undersöker ifall spelaren är i närheten av ett item när de trycker på mellanslag.
+
+            //-------------------------------------------------------------------------------[checkForItems()]
+
+            function checkForItems() {
 
                 //Loopa igenom alla objekten först.
                 for (i = 0; i < blocks.length; i++) {
 
-                    //Hitta dörrarna.
                     if (blocks[i].type == "item") {
-                    var bBox = (blocks[i].height + (blocks[i].top + 10));
-                    var rBox = (blocks[i].left + (blocks[i].width + 10));
-                    var lBox = (blocks[i].left - (playerSize + 10));
-                    var tBox = (blocks[i].top - (playerSize + 10)); 
-
-                    //-----------------------------------------------------------------------[checkForItems()]
+                        var collide = colliding(player, 10);
+                         if(collide == true) {
 
                     //Undersök ifall spelaren är nära items.
 
-                        if (a.top > tBox && (a.top < bBox) && a.left < rBox  && (a.left > lBox))  {
                           
                             $("#" + blocks[i].id + "").removeClass("stop"); //Ta bort klassen 'stop' på items.
                             $("#" + blocks[i].id + "").hide("#" + blocks[i].id + "");
                             $("#" + blocks[i].id + "").remove("#" + blocks[i].id + "");
-                            var newPosition = $("#inventory").prepend("<img  src='img/"+ blocks[i].id +".png' id='item'/>").position(); //Ta bort klassen 'stop' på items.
-                            inventory(blocks[i].id, newPosition.top, newPosition.left, 1);
-                               
+                            inventory(blocks[i].id,1);
 
                            
+                                var padding = ((51 - blocks[i].id.height)/ 4 + 3);
+                                $("#inventory").prepend("<div><img  src='img/"+ blocks[i].id +".png' id='item' style='padding-top: " + padding + "px'/></div>");
+                            
+
                             
                             //Ta bort items från blocks[]
                             blocks.splice(0,blocks.length);
                             calculateBlocks();
-                            console.log(blocks)
                             canMove[i] = true;
-                        }      
+                             
                     }                 
                 }
             }
 
-        
-
+            }
+   
+     calculateBlocks();
             //------------------------------------------------------------------------------------------------
 
-            //Knapptryckningar
 
-            //------------------------------------------------------------------------------[Knapptryckningar]
+            $(document).ready(function() {
 
-            $(document).keydown(function(pk){
+                $(".displayContent").prepend("<div class='item collision key' id='keyOne'></div> ")
+                $(".displayContent").prepend("<div class='item collision key' id='keyTwo'></div> ")
+                calculateBlocks();
+                // Items with basic remove animations
+                if (localStorage.getItem("keyOne") == "true") {
+                    addToInventory("keyOne");
+                }
+                if (localStorage.getItem("keyTwo") == "true") {
+                    addToInventory("keyTwo");
+                }
+            //------------------------------------------------------------------------------------------------
 
-                //Hämta spelarens position.
-                var getPos =  $('#box');
-                var pos = getPos.position();
+            //Kalkylera och lägg in all information i blocks[];
 
-                //Gå till vänster (vänsterpil).
-                if(pk.keyCode == '37' && pos.left >= '1') {
-                    pos.left -= playerSpeed;
-                    checkForBlocks(pos, "left");
-                    if(jQuery.inArray(false, canMove) == -1) {
-                    $('#box').css('left', pos.left + 'px'); }
-                    }
+            calculatePlayer();
+            calculateMapSize();
+            calculateBlocks();
+            //------------------------------------------------------------------------------------------------
 
-                //Gå till höger (högerpil).
-                if(pk.keyCode == '39' && pos.left <= '790') {
-                    pos.left += playerSpeed;
-                    checkForBlocks(pos, "right");
-                    if(jQuery.inArray(false, canMove) == -1) {
-                    $('#box').css('left', pos.left + 'px');}   
-                    }
+            if (map.id == "entangledMap") {
+            calculateMirror();
 
-                //Gå neråt (pil neråt).
-                if(pk.keyCode == '38' && pos.top >= '1') {    
-                    pos.top -= playerSpeed;
-                    checkForBlocks(pos, "up");
-                    if(jQuery.inArray(false, canMove) == -1) {
-                    $('#box').css('top', pos.top +'px');}
-                    }
-
-                //Gå uppåt (pil uppåt).
-                if(pk.keyCode == '40' && pos.top <= '450') {
-                    pos.top += playerSpeed;
-                    checkForBlocks(pos, "down");
-                    if(jQuery.inArray(false, canMove) == -1) {
-                    $('#box').css('top', pos.top + 'px');}
-                    }
-
-                //Öppna dörrar (Mellanslag)
-                if(pk.keyCode == '32') {
-                    checkForDoors(pos);
-                    checkForItems(pos);
-                    }
-
-
-            });
+            }
 
             //------------------------------------------------------------------------------------------------
             
-                            console.log(blocks);
-    });
+            //document-keydown: Alla tangentryckningar.
+
+            //------------------------------------------------------------------------------[document-keydown]
+
+
+            $(document).keydown(function(pk){
+            calculatePlayer();
+
+            if (map.id == "entangledMap") {
+                mirroredWalk(pk);
+            }
+             else {
+
+                     //Gå till vänster (vänsterpil).
+            if(pk.keyCode == '37' && player.left > map.left) {
+                player.left -= player.speed;
+                checkForBlocks('left');
+                if(jQuery.inArray(false, canMove) == -1) {
+                $('#box').css('left', player.left + 'px'); 
+                }}
+
+            //Gå till höger (högerpil).
+            if(pk.keyCode == '39' && player.right < map.right) {
+                player.left += player.speed;
+                checkForBlocks('right');
+                if(jQuery.inArray(false, canMove) == -1) {
+                $('#box').css('left', player.left + 'px');      
+                }}
+
+            //Gå uppåt (pil uppåt).
+            if(pk.keyCode == '38' && player.top > map.top) {    
+                player.top -= player.speed;
+                checkForBlocks('up');
+                if(jQuery.inArray(false, canMove) == -1) {
+                $('#box').css('top', player.top +'px');
+                }}
+
+            //Gå neråt (pil neråt).
+            if(pk.keyCode == '40' && player.bottom < map.bottom) {
+
+                player.top += player.speed;     
+                checkForBlocks('down');
+                if(jQuery.inArray(false, canMove) == -1) {
+                    $('#box').css('top', player.top + 'px');
+                }
+                }
+            }
+       
+            //Öppna dörrar (Mellanslag)
+            if(pk.keyCode == '32') {
+                checkForDoors();
+                checkForItems();
+               // swapPainting();
+                }
+         
+
+            //------------------------------------------------------------------------------------------------
+
+            //------------------------------------------------------------------------------------------------
+
+ });
+ 
+             });

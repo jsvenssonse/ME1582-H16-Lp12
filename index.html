@@ -2,44 +2,44 @@
 <html>
     <head>
         <meta charset="utf-8" />
-        <title>ayyy</title>
-        
+        <title>Entanglement</title>
+
         <script src="script/jquery-3.1.0.min.js"></script>
         <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.11.0/jquery-ui.min.js"></script>
         <script src="script/js-cookie.js"></script>
         <script src="script/inventory.js"></script>
         <script src="script/animations.js"></script>
-        <link href="style.css" type="text/css" rel="stylesheet" /> 
+        <link href="css/style.css" type="text/css" rel="stylesheet" /> 
 
     </head>
 
       <body>
 
-<div class="movement">
-  <div class="canMove"></div>
-  <div class="cantMove"></div>
+      <!-- Spelplan -->
+      <div class="displayContent" id="testMap">
+      <!-- Spelare -->
+      <div id="box" style="top: 120px; left: 20px;"></div>
+      <!-- <div id="mirror"></div>-->
 
-</div>
+      <!-- Dekorationer -->
+      <div class="sconce deco" style="top: 20px; left: 35px;"></div>
+      <div class="sconce deco" style="top: 20px; left: 220px;"></div>
+      <div class="sconce deco" style="top: 20px; left: 750px;"></div>
+      <div class="painting deco" style="top: 5px; left: 650px;"></div>
+      <div class="painting2 deco" style="top: 8px; left: 550px;"></div>
+      <div class="mat1 deco" style="top: 130px; left: 50px;"></div>
 
-      <div class="displayContent">
 
+      <!-- Block -->
+      <div class="static collision" id="stopOne"></div>
+      <div class="static collision" id="stopFour"></div>
+      <div class="static collision" id="stopTwo"></div>
+      <div class="static collision" id="stopThree"></div>
+      <div class="static collision" id="stopThree"></div>
+      <div class="door collision" id="doorOne"></div>
 
-    <div class="sconce" style="top: 20px; left: 35px;"></div>
-    <div class="sconce" style="top: 20px; left: 220px;"></div>
-    <div class="sconce" style="top: 20px; left: 750px;"></div>
-    <div class="painting" style="top: 5px; left: 650px;"></div>
-    <div class="painting2" style="top: 8px; left: 550px;"></div>
-    <div class="mat1" style="top: 130px; left: 50px;"></div>
-    <div id="box"></div>
-    <div class="stop" id="stopOne"></div>
-    <div class="stop" id="stopFour"></div>
-    <div class="stop" id="stopTwo"></div>
-    <div class="stop" id="stopThree"></div>
-    <div class="movable stop" id="stopFive"></div>
-    <div class="door stop" id="doorOne"></div>
-    <div class="door stop" id="doorTwo"></div>
-</div>
-<div id="inventory"></div>
+      <!-- Inventory -->
+      <div id="inventory"></div>
 
 
     </body>

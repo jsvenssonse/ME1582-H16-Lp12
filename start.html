@@ -1,31 +1,50 @@
-<!DOCTYPE HTML>
+<!DOCTYPE html>
 <html>
-  <head>
-    <title>ME1582</title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-    <link rel="stylesheet" href="style.css" />
-  </head>
-  <body>
-    <div class="row">
-      <div class="doors col-md-6 col-md-offset-3">
-        <div class="row">
-          <div class="col-md-4">
-            <div id="door1">
-              <a href="https://www.google.se/?gws_rd=ssl"><img src="../exempel.jpg" /></a>
-            </div>
-          </div>
-          <div class="col-md-4">
-            <div id="door2">
-              <a href="https://www.google.se/?gws_rd=ssl"><img src="../exempel.jpg" /></a>
-            </div>
-          </div>
-          <div class="col-md-4">
-            <div id="door3">
-              <a href="https://www.google.se/?gws_rd=ssl"><img src="../exempel.jpg" /></a>
-            </div>
-          </div>
-        </div>
+    <head>
+        <meta charset="utf-8" />
+        <title>Entanglement</title>
+
+        <script src="script/jquery-3.1.0.min.js"></script>
+        <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.11.0/jquery-ui.min.js"></script>
+        <script src="script/js-cookie.js"></script>
+        <script src="script/inventory.js"></script>
+        <script src="script/animations.js"></script>
+        <link href="css/style.css" type="text/css" rel="stylesheet" /> 
+        <link href="css/start.css" type="text/css" rel="stylesheet" /> 
+
+    </head>
+
+      <body>
+
+
+      <div class="displayContent" id="startMap">
+      <div id="box" style="bottom: 120px; left: 280px;"></div>
+
+
+      	<div class="entry static collision" id="entangled" style="left: 275px;"></div>
+      	<div class="entry static collision" id="secretroom" style="left: 170px;"></div>
+
+      	<div class="entry static collision" id="diffraction" style="right: 170px;"></div>
+
+
+      	<div class="static collision startWall" id="wall1" style="left: 0px; width: 170px;"></div>
+      	<div class="static collision startWall" id="wall2" style="left: 220px; width: 55px;"></div>
+      	<div class="static collision startWall" id="wall3" style="right: 220px; width: 55px;"></div>
+      	<div class="static collision startWall" id="wall4" style="right: 0px; width: 170px;"></div>
+      	<div class="startWall" style="right: 170px; width: 260px; height: 45px; z-index: 1000;"></div>
+
+
+      	<div class="door collision" id="paintingDoor"></div>
+      	<div class="door collision" id="entangledDoor"></div>
+      	<div class="door collision" id="diffractionDoor"></div>
+
+          <div class="sconce deco" style="top: 20px; left: 50px; z-index: 500;"></div>
+          <div class="sconce deco" style="top: 20px; right: 50px; z-index: 500;"></div>
+
+      <div class="item collision key" id="keyTwo"></div>
       </div>
-    </div>
-  </body>
-</html>
+
+      <!-- Inventory -->
+      <div id="inventory"></div>
+      </body>
+      </html>

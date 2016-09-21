@@ -1,0 +1,280 @@
+
+	body {
+		background-color: #d5d3d3;
+	}
+
+	/* ------------------------------------------------------------------------------------- Global */
+
+	/* -------------------------------------------------------------------------------------------- */
+
+	.displayContent {
+	    position:absolute;
+		border: 10px solid white;
+	}
+
+	.collision, .movable {
+		z-index: 5;
+	}
+
+	#inventory {
+			width: 312px;
+			height: 44px;
+			background-image: url(../img/inventory.png);
+			position: absolute;
+			bottom: -54px;
+			left: 0px;
+			padding-left: 72px;
+		}
+
+	.smoke {
+		top: 345px;
+		width: 15px;
+		height: 14px;
+		position: absolute;
+		z-index: 1000;
+	}
+
+
+	.sparkle {
+		top: 273px;
+		width: 7px;
+		height: 8px;
+		position: absolute;
+		z-index: 1000;
+	}
+
+
+	/* -------------------------------------------------------------------------------------------- */
+
+
+
+
+
+	/* --------------------------------------------------------------------------------- Testkartan */
+
+	/* --------------------------------------------------------------------------------------[Test] */
+
+
+	#testMap {
+		width: 840px;
+		height: 500px;
+		background: url(../img/floorBlock.png);
+	    top: 25px;
+	    left: 350px;
+	}
+
+	#box {
+	    position:absolute;
+	    width:40px; height:40px;    
+		background: url(../img/player.png);
+		z-index: 10;
+	}
+
+	/* ---------------------------------------------------------------------------------- Stopblock */
+
+	/* --------------------------------------------------------------------------------------[Test] */
+
+		#stopOne {
+		left: 0px;
+		top: 0px;
+		width: 120px;
+		height: 120px;
+		background: url(../img/wallpaper2.png);
+		}
+
+		#stopFour{
+			position: absolute;
+			right: 0px;
+			top: 0px;
+			width: 670px;
+			height: 120px;
+			background: url(../img/wallpaper2.png);
+		}
+
+		#stopTwo {
+			position: absolute;
+			left: 0px;
+			top: 400px;
+			width: 200px;
+			height: 50px;
+			background: url(../img/cobble_one.png);
+		}
+
+
+		#stopThree {
+			position: absolute;
+			right: 220px;
+			top: 220px;
+			width: 200px;
+			height: 90px;
+			background: url(../img/cobble_one.png);
+		}
+
+
+
+
+		#stopFive {
+			width: 50px;
+			height: 50px;
+			position: absolute;
+			left: 130px;
+			top: 210px;
+			background: url(../img/wood_2.png);
+		}
+
+	/* --------------------------------------------------------------------------------------[Test] */
+
+	/* ------------------------------------------------------------------------- Interactable items */
+#inventory div {
+        width: 53px;
+        height: 44px;
+        text-align: center;
+        display: inline-block;
+    }
+	.key {
+		width: 20px;
+		height: 30px;
+		background-image: url(../img/keyOne.png);
+		background-repeat: no-repeat;
+		position: absolute;
+		top: 250px;
+		left: 250px;
+	}
+	#keyTwo {
+		position: absolute;
+		top: 150px;
+		left: 250px;
+	}
+
+	#doorOne {
+		width: 50px;
+		height: 120px;
+		position: absolute;
+		left: 120px;
+		top: 0px;
+		background: url(../img/doorOne.png);
+	}
+
+
+	.chest {
+		width: 50px;
+		height: 40px;
+		background: url(../img/chest.png);
+		background-repeat: no-repeat;
+	}
+
+	/* ------------------------------------------------------------------------------- Dekorationer */
+	
+	/* -------------------------------------------------------------------------------------------- */
+
+
+	.deco {
+	position: absolute;
+	z-index: 6;
+	}
+
+	.sconce {
+		width: 51px;
+		height: 63px;
+		background: url(../img/decorations/sconce.png);
+	}
+
+	.painting {
+		width: 84px;
+		height: 98px;
+		background: url(../img/decorations/painting.png);
+	}
+
+	.painting2 {
+		width: 78px;
+		height: 96px;
+		background: url(../img/decorations/painting_2.png);
+	}
+
+	.mat1 {
+		width: 178px;
+		height: 105px;
+		background: url(../img/decorations/mat_1.png);
+	}
+
+	.chair {
+		width: 44px;
+		height: 82px;
+		background: url(../img/decorations/chair.png);
+	}
+
+
+	.table {
+		width: 102px;
+		height: 72px;
+		background: url(../img/decorations/table.png);
+	}
+
+
+	.bookCase {
+		width: 97px;
+		height: 120px;
+		background: url(../img/decorations/bookCase.png) no-repeat;
+	}
+
+
+	.vase {
+		width: 34px;
+		height: 54px;
+		background: url(../img/decorations/blueVase.png) no-repeat;
+	}
+
+
+
+	.piano {
+		width: 110px;
+		height: 100px;
+		background: url(../img/decorations/piano.png) no-repeat;
+	}
+
+
+			#paintingDoor {
+				width: 50px;
+				height: 80px;
+				background: url(../img/doors/door2.png);
+				position: absolute;
+				top: 40px;
+			    left: 170px;
+				z-index: 5;
+
+			}
+			#entangledDoor {
+				width: 50px;
+				height: 80px;
+				background: url(../img/doors/door1.png);
+				position: absolute;
+				top: 40px;
+			    left: 275px;
+				z-index: 5;
+
+			}
+			#diffractionDoor {
+				width: 50px;
+				height: 80px;
+				background: url(../img/doors/door3.png);
+				position: absolute;
+				top: 40px;
+			    right: 170px;
+				z-index: 5;
+
+			}
+
+			.openDoor {
+				width: 18px;
+				height: 80px;
+				position: absolute;
+				z-index: 5000;
+			}
+
+			.entry {
+				width: 50px;
+				height: 30px;
+				z-index: 10;
+				position: absolute;
+				top: 0px;
+			}
