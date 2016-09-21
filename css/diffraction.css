@@ -6,21 +6,111 @@
 	/* ---------------------------------------------------------------------------------[Entangled] */
 
 			#diffractionMap {
-				width: 850px;
-				height: 500px;
-				background: url(../img/floorBlock.png);
-			    top: 25px;
-			    left: 335px;
+				width: 650px;
+				height: 650px;
+				background: url(../img/glassFloorB.png);
+			    top: 10px;
+			    left: 435px;
 			}
 
 	/* ---------------------------------------------------------------------------------- Stopblock */
 
 			.diffWall {
-				height: 120px;
-				background: url(../img/wallpaper.png);
+				height: 150px;
+				background: url(../img/diffWall.png);
 			    top: 0px;
 			    position: absolute;
 			}
 	/* --------------------------------------------------------------------------------------[Test] */
 
 		
+			.prism {
+				height: 78px;
+				width: 81px;
+				background: url(../img/diffraction/prism2.png) no-repeat;
+			    top: 140px;
+			    position: absolute;
+			    left: 284px;
+			}
+			.window {
+				height: 121px;
+				width: 77px;
+				background: url(../img/diffraction/diffWindow.png) no-repeat;
+			    top: 10px;
+			    position: absolute;
+			    left: 287px;
+			    z-index: 70;
+			}
+			.lightBeam1 {
+				width: 83px;
+				height: 226px;
+				background: url(../img/diffraction/lightBeam1.png) no-repeat;
+			    top: 23px;
+			    position: absolute;
+			    left: 283px;
+			    z-index: 70;
+			}
+			.diffBlock {
+				width: 40px;
+				height: 45px;
+				background: url(../img/diffraction/diffBlock.png) no-repeat;
+			    top: 236px;
+			    position: absolute;
+			    left: 305px;
+			    z-index: 60;
+			}
+
+			.diffSolution {
+				background: url(../img/diffraction/lightBeam2.png) no-repeat;
+				width: 557px;
+				height: 334px;
+			    z-index: 700;
+			    position: absolute;
+			    left: 49px;
+			    top: 236px;
+			    display: none;
+
+			}
+
+			.starsFloor {
+				background: url(../img/diffraction/starsFloor.png) no-repeat;
+				width: 650px;
+				height: 500px;
+			    z-index: 5;
+			    position: absolute;
+			    left: 0px;
+			    top: 146px;
+
+			}
+
+			.twinkle1 {
+				background: url(../img/diffraction/twinkle1.png) no-repeat;
+				width: 197px;
+				height: 203px;
+			    z-index: 5;
+			    position: absolute;
+			    left: 55px;
+			    top: 146px;
+			    display: none;
+			}
+
+			.twinkle2 {
+				background: url(../img/diffraction/twinkle2.png) no-repeat ;
+				width: 175px;
+				height: 85px;
+			    z-index: 5;
+			    position: absolute;
+			    right: 55px;
+			    bottom: 46px;
+			    display: none;
+			}
+			.twinkle3 {
+				background: url(../img/diffraction/twinkle3.png) no-repeat ;
+				width: 423px;
+				height: 244px;
+			    z-index: 5;
+			    position: absolute;
+			    right: 0px;
+			    top: 246px;
+			    display: none;
+			}

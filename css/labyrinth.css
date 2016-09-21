@@ -1,19 +1,15 @@
 
-
-
-	/* ---------------------------------------------------------------------------- Entangledkartan */
-
-	/* ---------------------------------------------------------------------------------[Entangled] */
+	/* -------------------------------- [Kartan] -------------------------------- */
 
 			#entangledMap {
 				width: 960px;
-				height: 560px;
+				height: 640px;
 				background: url(../img/entangled/floor.png);
-			    top: 95px;
+			    top: 15px;
 			    left: 290px;
 			}
 
-			/* Spelare 2 */
+	/* ------------------------------- [Spelare 2] ------------------------------ */
 
 			 #mirror {
 			    position:absolute;
@@ -22,45 +18,67 @@
 				z-index: 300;
 			} 
 
+	/* ------------------------------- [Väggarna] ------------------------------ */
 
-			#entangledWall {
-				width: 960px;
-				height: 70px;
-			    left: 290px;
-				border-top: 10px solid white;
-				border-right: 10px solid white;
-				border-left: 10px solid white;
+			.entangledWall {
+				height: 80px;
 				background: url(../img/entangled/wall.png);
 				position: absolute;
-				top: 25px;
+				top: 0px;
 				z-index: 5;
 
 			}
 
 
-	/* ---------------------------------------------------------------------------------- Stopblock */
+			.mirrorNook {
+				height: 50px;
+				width: 50px;
+				background: url(../img/entangled/floor.png);
+				position: absolute;
+				bottom: -60px;
+				right: 35px;
+				z-index: 5;
+				border-right: 10px solid white;
+				border-left: 10px solid white;
+				border-bottom: 10px solid white;
 
-	/* --------------------------------------------------------------------------------------[Test] */
+			}
 
-		.labBlock {
-			position: absolute;
-			background: url(../img/entangled/block.png);
-			font-size: 28px;
-			font-family: verdana;
-			font-weight: bold;
-			color: yellow;
 
-		}
+
+	/* ------------------------ [Interactable items] -------------------------- */
+
+			.enPainting {
+				width: 84px;
+				height: 76px;
+				background: url(../img/decorations/painting_3.png);
+			}
+
+			.keyHole {
+				width: 84px;
+				height: 76px;
+				background: url(../img/keyHole.png);
+			}
+
+
 		#greenButton {
 			background: url(../img/entangled/greenButton.png) no-repeat;
 			width: 16px;
 			height: 30px;
 			position: absolute;
-			top: -30px;
+			top: 50px;
 			right: 150px;
 			z-index: 7;
 		}
 
+
+
+		#bars {
+			top: 400px;
+			left: 480px;
+			height: 40px;
+			width: 40px;
+		}
 
 
 		#greenButtonMirror {
@@ -91,390 +109,271 @@
 
 
 
+	/* ---------------------- [Alla labyrinthblocken] ------------------------ */
+
+
+		.labBlock {
+			position: absolute;
+			background: url(../img/entangled/block.png);
+
+		}
 
 		.invisible {
 			background: none !important;
 		}
+
 		.bars {
 			background: url(../img/entangled/bars.PNG);
 		}
 
 
-		#bars {
-			top: 320px;
-			left: 480px;
-			height: 40px;
-			width: 40px;
-		}
-
-
 		#col1 {
-			top: 40px;
-			left: 0px;
-			height: 80px;
-			width: 120px;
+			top: 120px;		left: 0px;
+			height: 80px;	width: 120px;
 		}
 
 		#col2 {
-			top: 160px;
-			left: 40px;
-			height: 40px;
-			width: 80px;
+			top: 240px;		left: 40px;
+			height: 40px;	width: 80px;
 		}
 
 		#col3 {
-			top: 200px;
-			left: 40px;
-			height: 120px;
-			width: 40px;
+			top: 280px;		left: 40px;
+			height: 120px;	width: 40px;
 		}
 
 		#col4 {
-			top: 320px;
-			left: 40px;
-			height: 40px;
-			width: 200px;
+			top: 400px;		left: 40px;
+			height: 40px;	width: 200px;
 		}
 
 		#col5 {
-			top: 400px;
-			left: 0px;
-			height: 40px;
-			width: 120px;
+			top: 480px;		left: 0px;
+			height: 40px;	width: 120px;
 		}
 
 		#col6 {
-			top: 480px;
-			left: 40px;
-			height: 40px;
-			width: 200px;
+			top: 560px;		left: 40px;
+			height: 40px;	width: 200px;
 		}
 
 		#col7 {
-			top: 360px;
-			left: 160px;
-			height: 120px;
-			width: 80px;
+			top: 440px;		left: 160px;
+			height: 120px;	width: 80px;
 		}
 
 		#col8 {
-			top: 40px;
-			left: 160px;
-			height: 160px;
-			width: 40px;
+			top: 120px;		left: 160px;
+			height: 160px;	width: 40px;
 		}
 
 		#col9 {
-			top: 160px;
-			left: 200px;
-			height: 40px;
-			width: 40px;
+			top: 240px;		left: 200px;
+			height: 40px;	width: 40px;
 		}
 
 		#col10 {
-			top: 240px;
-			left: 120px;
-			height: 40px;
-			width: 320px;
+			top: 320px;		left: 120px;
+			height: 40px;	width: 320px;
 		}
 		#col11 {
-			top: 280px;
-			left: 280px;
-			height: 40px;
-			width: 160px;
+			top: 360px;		left: 280px;
+			height: 40px;	width: 160px;
 		}
 		#col12 {
-			top: 320px;
-			left: 280px;
-			height: 40px;
-			width: 200px;
+			top: 400px;		left: 280px;
+			height: 40px;	width: 200px;
 		}
 		#col13 {
-			top: 40px;
-			left: 240px;
-			height: 80px;
-			width: 80px;
+			top: 120px;		left: 240px;
+			height: 80px;	width: 80px;
 		}
 		#col14 {
-			top: 120px;
-			left: 280px;
-			height: 80px;
-			width: 40px;
+			top: 200px;		left: 280px;
+			height: 80px;	width: 40px;
 		}
 
 		#col15 {
-			top: 160px;
-			left: 280px;
-			height: 40px;
-			width: 160px;
+			top: 240px;		left: 280px;
+			height: 40px;	width: 160px;
 		}
 
 		#col16 {
-			top: 40px;
-			left: 360px;
-			height: 80px;
-			width: 120px;
+			top: 120px;		left: 360px;
+			height: 80px;	width: 120px;
 		}
-
-
 
 		#col17 {
-			top: 0px;
-			left: 520px;
-			height: 40px;
-			width: 120px;
+			top: 80px;		left: 520px;
+			height: 40px;	width: 120px;
 		}
 
-
 		#col18 {
-			top: 0px;
-			left: 640px;
-			height: 80px;
-			width: 40px;
+			top: 80px;		left: 640px;
+			height: 80px;	width: 40px;
 		}
 
 		#col19 {
-			top: 80px;
-			left: 560px;
-			height: 80px;
-			width: 40px;
+			top: 160px;		left: 560px;
+			height: 80px;	width: 40px;
 		}
 
 		#col20 {
-			top: 120px;
-			left: 640px;
-			height: 40px;
-			width: 80px;
+			top: 200px;		left: 640px;
+			height: 40px;	width: 80px;
 		}
-		/**/
 
 		#col21 {
-			top: 200px;
-			left: 640px;
-			height: 320px;
-			width: 40px;
+			top: 280px;		left: 640px;
+			height: 320px;	width: 40px;
 		}
 
 
 		#col22 {
-			top: 40px;
-			left: 720px;
-			height: 200px;
-			width: 80px;
+			top: 120px;		left: 720px;
+			height: 200px;	width: 80px;
 		}
 		#col23 {
-			top: 40px;
-			left: 800px;
-			height: 40px;
-			width: 120px;
+			top: 120px;		left: 800px;
+			height: 40px;	width: 120px;
 		}
 		#col24 {
-			top: 200px;
-			left: 800px;
-			height: 40px;
-			width: 120px;
+			top: 280px;		left: 800px;
+			height: 40px;	width: 120px;
 		}
 		#col25 {
-			top: 120px;
-			left: 840px;
-			height: 40px;
-			width: 120px;
+			top: 200px;		left: 840px;
+			height: 40px;	width: 120px;
 		}
 
-
-		/**/
-
 		#col26 {
-			top: 440px;
-			left: 840px;
-			height: 80px;
-			width: 120px;
+			top: 520px;		left: 840px;
+			height: 80px;	width: 120px;
 		}
 
 		#col27 {
-			top: 440px;
-			left: 760px;
-			height: 120px;
-			width: 40px;
+			top: 520px;		left: 760px;
+			height: 120px;	width: 40px;
 		}
-
-
-
 
 		#col28 {
-			top: 240px;
-			left: 880px;
-			height: 160px;
-			width: 40px;
+			top: 320px;		left: 880px;
+			height: 160px;	width: 40px;
 		}
 		#col29 {
-			top: 360px;
-			left: 720px;
-			height: 40px;
-			width: 200px;
+			top: 440px;		left: 720px;
+			height: 40px;	width: 200px;
 		}
 
 		#col30 {
-			top: 280px;
-			left: 680px;
-			height: 40px;
-			width: 160px;
+			top: 360px;		left: 680px;
+			height: 40px;	width: 160px;
 		}
 
-
-		/**/
-
 		#col31 {
-			top: 440px;
-			left: 680px;
-			height: 80px;
-			width: 40px;
+			top: 520px;		left: 680px;
+			height: 80px;	width: 40px;
 		}
 
 		#col32 {
-			top: 440px;
-			left: 480px;
-			height: 80px;
-			width: 120px;
+			top: 520px;		left: 480px;
+			height: 80px;	width: 120px;
 		}
 
 
 		#col33 {
-			top: 200px;
-			left: 520px;
-			height: 200px;
-			width: 80px;
+			top: 280px;		left: 520px;
+			height: 200px;	width: 80px;
 		}
 		#col34 {
-			top: 200px;
-			left: 480px;
-			height: 40px;
-			width: 40px;
+			top: 280px;		left: 480px;
+			height: 40px;	width: 40px;
 		}
-		
+
 		#col35 {
-			top: 520px;
-			left: 280px;
-			height: 40px;
-			width: 160px;
+			top: 600px;		left: 280px;
+			height: 40px;	width: 160px;
 		}
-
-
 
 		#col36 {
-			top: 400px;
-			left: 280px;
-			height: 40px;
-			width: 120px;
+			top: 480px;		left: 280px;
+			height: 40px;	width: 120px;
 		}
 
 		#col37 {
-			top: 440px;
-			left: 360px;
-			height: 40px;
-			width: 40px;
+			top: 520px;		left: 360px;
+			height: 40px;	width: 40px;
 		}
 
 
 		#col38 {
-			top: 480px;
-			left: 280px;
-			height: 40px;
-			width: 40px;
+			top: 560px;		left: 280px;
+			height: 40px;	width: 40px;
 		}
 		#col39 {
-			top: 360px;
-			left: 440px;
-			height: 120px;
-			width: 40px;
+			top: 440px;		left: 440px;
+			height: 120px;	width: 40px;
 		}
-
-
-
 
 		#col46 {
-			top: 80px;
-			left: 480px;
-			height: 120px;
-			width: 40px;
+			top: 160px;		left: 480px;
+			height: 120px;	width: 40px;
 		}
 
-
-		/*invisible*/
-
+		/* ------- [INVISIBLE] -------*/
 
 		#col40 {
-			top: 0px;
-			left: 160px;
-			height: 40px;
-			width: 40px;
-			background: red;
+			top: 80px;		left: 160px;
+			height: 40px;	width: 40px;
 		}
 
 
 		#col41 {
-			bottom: 120px;
-			left: 240px;
-			height: 40px;
-			width: 40px;
-			background: red;
+			bottom: 120px;	left: 240px;
+			height: 40px;	width: 40px;
 		}
 
 
 		#col42 {
-			top: 200px;
-			left: 280px;
-			height: 40px;
-			width: 40px;
-			background: red;
+			top: 280px;		left: 280px;
+			height: 40px;	width: 40px;
 		}
 
 
 		#col43 {
-			top: 160px;
-			left: 120px;
-			height: 40px;
-			width: 40px;
-			background: red;
+			top: 240px;		left: 120px;
+			height: 40px;	width: 40px;
 		}
 
-
-
 		#col45 {
-			top: 200px;
-			left: 440px;
-			height: 40px;
-			width: 40px;
+			top: 280px;		left: 440px;
+			height: 40px;	width: 40px;
 		}
 
 		#col47 {
-			top: 360px;
-			left: 600px;
-			height: 40px;
-			width: 40px;
+			top: 440px;		left: 600px;
+			height: 40px;	width: 40px;
 		}
 
 		#col48 {
-			top: 120px;
-			left: 600px;
-			height: 40px;
-			width: 40px;
+			top: 200px;		left: 600px;
+			height: 40px;	width: 40px;
 		}
 
 		#col49 {
-			top: 200px;
-			left: 600px;
-			height: 40px;
-			width: 40px;
+			top: 280px;		left: 600px;
+			height: 40px;	width: 40px;
 		}
 
 
 		#col50 {
-			bottom: 120px;
-			right: 160px;
-			height: 40px;
-			width: 40px;
+			bottom: 120px;	right: 160px;
+			height: 40px;	width: 40px;
 		}
+
+
+
+
 
 
 

@@ -1,104 +1,127 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="utf-8" />
-        <title>Entanglement</title>
+   <head>
+      <meta charset="utf-8" />
+      <title>Entanglement</title>
+      <script src="script/jquery-3.1.0.min.js"></script>
+      <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.11.0/jquery-ui.min.js"></script>
+      <script src="script/animations.js"></script>
+      <script src="script/entangled.js"></script>
 
-        <script src="script/jquery-3.1.0.min.js"></script>
-        <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.11.0/jquery-ui.min.js"></script>
-        <script src="script/js-cookie.js"></script>
-        <script src="script/inventory.js"></script>
-        <script src="script/entangled.js"></script>
-        <script src="script/animations.js"></script>
-        <link href="css/style.css" type="text/css" rel="stylesheet" /> 
-        <link href="css/labyrinth.css" type="text/css" rel="stylesheet" /> 
+      <link href="css/style.css" type="text/css" rel="stylesheet" /> 
+      <link href="css/labyrinth.css" type="text/css" rel="stylesheet" /> 
 
-    </head>
+   </head>
 
       <body>
 
-      <!-- Spelplan -->
-      <div id="entangledWall"></div>
-      <div class="displayContent" id="entangledMap">
-      <!-- Spelare -->
-      <div id="box" style="top: 0px; left: 0px;"><div id="boxExpression"></div></div>
-      <div id="mirror" style="bottom: 0px; right: 0px;"><div id="mirrorExpression"></div></div>
+         <!-- Spelplan -->
+         <div class="displayContent" id="entangledMap">      
 
-        <div class="item chest collision deco" id="entangledChest" style="top: 270px; left: 455px;"></div>
+            <!-- Inventory -->
+            <div id="inventory"></div>
+            <!-- //Inventory -->
 
-        <div class="static labBlock collision" id="col1"></div>
-        <div class="static labBlock collision" id="col2"></div>
-        <div class="static labBlock collision" id="col3"></div>
-        <div class="static labBlock collision" id="col4"></div>
-        <div class="static labBlock collision" id="col5"></div>
-        <div class="static labBlock collision" id="col6"></div>
-        <div class="static labBlock collision" id="col7"></div>
-        <div class="static labBlock collision" id="col8"></div>
-        <div class="static labBlock collision" id="col9"></div>
-        <div class="static labBlock collision" id="col10"></div>
-        <div class="static labBlock collision" id="col11"></div>
-        <div class="static labBlock collision" id="col12"></div>
-        <div class="static labBlock collision" id="col13"></div>
-        <div class="static labBlock collision" id="col14"></div>
-        <div class="static labBlock collision" id="col15"></div>
-        <div class="static labBlock collision" id="col16"></div>
-        <div class="static labBlock collision" id="col17"></div>
-        <div class="static labBlock collision" id="col18"></div>
-        <div class="static labBlock collision" id="col19"></div>
-        <div class="static labBlock collision" id="col20"></div>
-        <div class="static labBlock collision" id="col21"></div>
-        <div class="static labBlock collision" id="col22"></div>
-        <div class="static labBlock collision" id="col23"></div>
-        <div class="static labBlock collision" id="col24"></div>
-        <div class="static labBlock collision" id="col25"></div>
-        <div class="static labBlock collision" id="col26"></div>
-        <div class="static labBlock collision" id="col27"></div>
-        <div class="static labBlock collision" id="col28"></div>
-        <div class="static labBlock collision" id="col29"></div>
-        <div class="static labBlock collision" id="col30"></div>
-        <div class="static labBlock collision" id="col31"></div>
-        <div class="static labBlock collision" id="col32"></div>
-        <div class="static labBlock collision" id="col33"></div>
-        <div class="static labBlock collision" id="col34"></div>
-        <div class="static labBlock collision" id="col35"></div>
-        <div class="static labBlock collision" id="col36"></div>
-        <div class="static labBlock collision" id="col37"></div>
-        <div class="static labBlock collision" id="col38"></div>
-        <div class="static labBlock collision" id="col39"></div>
-        <div class="static labBlock collision" id="col46"></div>
+            <!-- Spelare -->
+            <div id="box" style="top: 80px; left: 0px;">
+               <div id="boxExpression"></div>
+            </div>
+            <div id="mirror" style="bottom: 0px; right: 0px;">
+               <div id="mirrorExpression"></div>
+            </div>
+            <!-- //Spelare -->
 
+            <!-- Vägg & Dörr -->
+            <div class="static collision entangledWall" id="wall" style="width: 50px; left: 0px;"></div>
+            <div class="static collision entangledWall" style="width: 860px; left: 100px;"></div>
+            <div class="door collision" id="entangledDoor" style="left: 50px; top: 00px;"></div>
+            <div class="entry static collision" id="start" style="left: 50px; top: 0;"></div>
+            <div class="mirrorNook"></div>
+            <!-- // Vägg & Dörr -->
 
-        <div class="static labBlock collision bars" id="bars">
+            <!-- Tavla & Nyckel -->
+            <div class="enPainting deco collision" id="paintingButton" style="top: 0px; left: 420px; z-index: 12;"></div>
+            <div class="keyHole deco collision" id="keyHole" style="top: 0px; left: 420px; z-index: 10;"></div>
+            <div class="diffractionKey collision" id="diffractionKey" ></div>
+            <!-- //Tavla & Nyckel -->
+
+            <!-- Kista & Item -->
+            <div class="chest deco collision " id="entangledChest" style="top: 340px; left: 455px;"></div>
+            <div class="diamond collision" id="diamond"></div>
+            <!-- //Kista & Item -->
+
+            <!-- Knappar -->
+            <div class="button collision" id="greenButton"></div>
+            <div class="button collision" id="greenButtonMirror"></div>
+            <!-- //Knappar -->
+
+            <!-- Dekorationer -->
+            <div class="sconce deco" style="top: 0px; left: 200px; z-index: 500;"></div>
+            <div class="sconce deco" style="top: 0px; left: 350px; z-index: 500;"></div>
+            <div class="sconce deco" style="top: 0px; right: 350px; z-index: 500;"></div>
+            <div class="sconce deco" style="top: 0px; right: 200px; z-index: 500;"></div>
+            <div class="sconce deco" style="top: 0px; right: 50px; z-index: 500;"></div>
+            <!-- Dekorationer -->
+
+            <!-- Labyrinten -->
+            <div class="static labBlock collision" id="col1"></div>
+            <div class="static labBlock collision" id="col2"></div>
+            <div class="static labBlock collision" id="col3"></div>
+            <div class="static labBlock collision" id="col4"></div>
+            <div class="static labBlock collision" id="col5"></div>
+            <div class="static labBlock collision" id="col6"></div>
+            <div class="static labBlock collision" id="col7"></div>
+            <div class="static labBlock collision" id="col8"></div>
+            <div class="static labBlock collision" id="col9"></div>
+            <div class="static labBlock collision" id="col10"></div>
+            <div class="static labBlock collision" id="col11"></div>
+            <div class="static labBlock collision" id="col12"></div>
+            <div class="static labBlock collision" id="col13"></div>
+            <div class="static labBlock collision" id="col14"></div>
+            <div class="static labBlock collision" id="col15"></div>
+            <div class="static labBlock collision" id="col16"></div>
+            <div class="static labBlock collision" id="col17"></div>
+            <div class="static labBlock collision" id="col18"></div>
+            <div class="static labBlock collision" id="col19"></div>
+            <div class="static labBlock collision" id="col20"></div>
+            <div class="static labBlock collision" id="col21"></div>
+            <div class="static labBlock collision" id="col22"></div>
+            <div class="static labBlock collision" id="col23"></div>
+            <div class="static labBlock collision" id="col24"></div>
+            <div class="static labBlock collision" id="col25"></div>
+            <div class="static labBlock collision" id="col26"></div>
+            <div class="static labBlock collision" id="col27"></div>
+            <div class="static labBlock collision" id="col28"></div>
+            <div class="static labBlock collision" id="col29"></div>
+            <div class="static labBlock collision" id="col30"></div>
+            <div class="static labBlock collision" id="col31"></div>
+            <div class="static labBlock collision" id="col32"></div>
+            <div class="static labBlock collision" id="col33"></div>
+            <div class="static labBlock collision" id="col34"></div>
+            <div class="static labBlock collision" id="col35"></div>
+            <div class="static labBlock collision" id="col36"></div>
+            <div class="static labBlock collision" id="col37"></div>
+            <div class="static labBlock collision" id="col38"></div>
+            <div class="static labBlock collision" id="col39"></div>
+            <div class="static labBlock collision" id="col46"></div>
+
+            <div class="static labBlock collision invisible" id="col40"></div>
+            <div class="static labBlock collision invisible" id="col41"></div>
+            <div class="static labBlock collision invisible" id="col42"></div>
+            <div class="static labBlock collision invisible" id="col43"></div>
+            <div class="static labBlock collision invisible" id="col45"></div>
+            <div class="static labBlock collision invisible" id="col47"></div>
+            <div class="static labBlock collision invisible" id="col48"></div>
+            <div class="static labBlock collision invisible" id="col49"></div>
+            <div class="static labBlock collision invisible" id="col50"></div>
+            <div class="static labBlock collision invisible" id="col45"></div>
+
+            <div class="static labBlock collision bars" id="bars"></div>
+            <!-- //Labyrinten -->
+
         </div>
-        <div class="static labBlock collision invisible" id="col45"></div>
 
-
-         <div class="button collision" id="greenButton"></div>
-         <div class="button collision" id="greenButtonMirror"></div>
-
-          <div class="sconce deco" style="top: -70px; left: 50px; z-index: 500;"></div>
-          <div class="sconce deco" style="top: -70px; left: 200px; z-index: 500;"></div>
-          <div class="sconce deco" style="top: -70px; left: 350px; z-index: 500;"></div>
-          <div class="sconce deco" style="top: -70px; right: 350px; z-index: 500;"></div>
-          <div class="sconce deco" style="top: -70px; right: 200px; z-index: 500;"></div>
-          <div class="sconce deco" style="top: -70px; right: 50px; z-index: 500;"></div>
-
-       
-        <div class="static labBlock collision invisible" id="col40"></div>
-        <div class="static labBlock collision invisible" id="col41"></div>
-        <div class="static labBlock collision invisible" id="col42"></div>
-        <div class="static labBlock collision invisible" id="col43"></div>
-        <div class="static labBlock collision invisible" id="col47"></div>
-        <div class="static labBlock collision invisible" id="col48"></div>
-        <div class="static labBlock collision invisible" id="col49"></div>
-        <div class="static labBlock collision invisible" id="col50"></div>
-        </div>
-
-
-
-      <!-- Block -->
-
-      <!-- Inventory -->
+      <!-- //Spelplan -->
 
       <!-- Inventory -->
       <div id="inventory"></div>
